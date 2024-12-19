@@ -721,6 +721,50 @@ export interface PluginReactIconsIconlibrary extends Schema.CollectionType {
   };
 }
 
+export interface PluginStrapiGoogleAuthGoogleCredential
+  extends Schema.SingleType {
+  collectionName: 'strapi-google-auth_google-credential';
+  info: {
+    description: 'Stores google project credentials';
+    displayName: 'Google Credentials';
+    pluralName: 'google-credentials';
+    singularName: 'google-credential';
+    tableName: 'google_auth_creds';
+  };
+  options: {
+    draftAndPublish: true;
+    populateCreatorFields: true;
+    privateAttributes: ['id', 'created_at'];
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::strapi-google-auth.google-credential',
+      'oneToOne',
+      'admin::user'
+    >;
+    google_client_id: Attribute.String & Attribute.Required;
+    google_client_secret: Attribute.String & Attribute.Required;
+    google_redirect_url: Attribute.String & Attribute.Required;
+    google_scopes: Attribute.JSON & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'plugin::strapi-google-auth.google-credential',
+      'oneToOne',
+      'admin::user'
+    >;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -1018,6 +1062,7 @@ declare module '@strapi/types' {
       'plugin::ezforms.submission': PluginEzformsSubmission;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::react-icons.iconlibrary': PluginReactIconsIconlibrary;
+      'plugin::strapi-google-auth.google-credential': PluginStrapiGoogleAuthGoogleCredential;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
