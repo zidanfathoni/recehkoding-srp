@@ -3810,7 +3810,7 @@
     "@strapi/utils" "4.25.18"
     fs-extra "10.0.0"
 
-"@strapi/strapi@4.25.18":
+"@strapi/strapi@4.25.18", "@strapi/strapi@^4.14.0":
   version "4.25.18"
   resolved "https://registry.yarnpkg.com/@strapi/strapi/-/strapi-4.25.18.tgz#be3fa9fea8a2b1e2ae48ccf7c9f91df4b3060fcf"
   integrity sha512-G3tkkuifXW18RRJwq8PE/eA6Gt4wlHpnGz+omeJEivONI0l5frRMA0RwtDSqPEtEAj9TiLtdiazMMa6sA2ZyqQ==
@@ -3999,7 +3999,7 @@
     aria-hidden "^1.2.4"
     react-remove-scroll "^2.5.9"
 
-"@strapi/utils@4.25.18", "@strapi/utils@^4.0.0":
+"@strapi/utils@4.25.18", "@strapi/utils@^4.0.0", "@strapi/utils@^4.14.0":
   version "4.25.18"
   resolved "https://registry.yarnpkg.com/@strapi/utils/-/utils-4.25.18.tgz#5ab92967f4f4c7b758b322d0b5a5f95d0af4f75e"
   integrity sha512-i2QqZCF39iJwijHmqTwhMFb8MIskFt+nusqvW45YqWAvb94Ck8da4RAbcxamxNtTCYd14Dgu35+6mJy9bqZ9qA==
@@ -12798,6 +12798,17 @@ strapi-plugin-sitemap@^3.2.1:
     redux-thunk "^2.3.0"
     sitemap "^7.1.0"
     xml2js "^0.5.0"
+
+strapi-plugin-slugify@^2.3.8:
+  version "2.3.8"
+  resolved "https://registry.yarnpkg.com/strapi-plugin-slugify/-/strapi-plugin-slugify-2.3.8.tgz#feed725c6becbb0408ce601f40055aaa76b98316"
+  integrity sha512-lbC04NaVgy18nY0l4KI4ld6h1L5bGAvEe0H3hOdFnaksKRRu+rwTaB58oQQBqZtWu4lZ2n2dtMQJB/mSmFd8KA==
+  dependencies:
+    "@sindresorhus/slugify" "1.1.0"
+    "@strapi/strapi" "^4.14.0"
+    "@strapi/utils" "^4.14.0"
+    lodash "^4.17.21"
+    yup "^0.32.9"
 
 strapi-provider-rest-cache-memory@^4.2.9:
   version "4.2.9"
