@@ -676,6 +676,47 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface PluginPublisherAction extends Schema.CollectionType {
+  collectionName: 'actions';
+  info: {
+    displayName: 'actions';
+    pluralName: 'actions';
+    singularName: 'action';
+  };
+  options: {
+    comment: '';
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::publisher.action',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    entityId: Attribute.Integer;
+    entitySlug: Attribute.String;
+    executeAt: Attribute.DateTime;
+    mode: Attribute.String;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'plugin::publisher.action',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginReactIconsIconlibrary extends Schema.CollectionType {
   collectionName: 'iconlibrary';
   info: {
@@ -1061,6 +1102,7 @@ declare module '@strapi/types' {
       'plugin::ezforms.recipient': PluginEzformsRecipient;
       'plugin::ezforms.submission': PluginEzformsSubmission;
       'plugin::i18n.locale': PluginI18NLocale;
+      'plugin::publisher.action': PluginPublisherAction;
       'plugin::react-icons.iconlibrary': PluginReactIconsIconlibrary;
       'plugin::strapi-google-auth.google-credential': PluginStrapiGoogleAuthGoogleCredential;
       'plugin::upload.file': PluginUploadFile;
