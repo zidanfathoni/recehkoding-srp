@@ -558,6 +558,82 @@ export interface ApiStackStack extends Schema.CollectionType {
   };
 }
 
+export interface ApiSubscribeSubscribe extends Schema.CollectionType {
+  collectionName: 'subscribes';
+  info: {
+    displayName: 'subscribe';
+    pluralName: 'subscribes';
+    singularName: 'subscribe';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::subscribe.subscribe',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    email: Attribute.Email & Attribute.Required;
+    is_active: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
+    name: Attribute.String & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::subscribe.subscribe',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTicketTicket extends Schema.CollectionType {
+  collectionName: 'tickets';
+  info: {
+    displayName: 'ticket';
+    pluralName: 'tickets';
+    singularName: 'ticket';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ticket.ticket',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    email: Attribute.Email & Attribute.Required;
+    message: Attribute.Text & Attribute.Required;
+    name: Attribute.String & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    status: Attribute.Enumeration<['pending', 'hold', 'progress', 'done']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'pending'>;
+    subject: Attribute.Text & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::ticket.ticket',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginCommentsComment extends Schema.CollectionType {
   collectionName: 'comments_comment';
   info: {
@@ -1575,6 +1651,8 @@ declare module '@strapi/types' {
       'api::profile.profile': ApiProfileProfile;
       'api::skill.skill': ApiSkillSkill;
       'api::stack.stack': ApiStackStack;
+      'api::subscribe.subscribe': ApiSubscribeSubscribe;
+      'api::ticket.ticket': ApiTicketTicket;
       'plugin::comments.comment': PluginCommentsComment;
       'plugin::comments.comment-report': PluginCommentsCommentReport;
       'plugin::content-releases.release': PluginContentReleasesRelease;
