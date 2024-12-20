@@ -14,6 +14,20 @@ export interface MacroLinkIcons extends Schema.Component {
   };
 }
 
+export interface MicroCta extends Schema.Component {
+  collectionName: 'components_micro_ctas';
+  info: {
+    displayName: 'cta';
+  };
+  attributes: {
+    description: Attribute.Text & Attribute.Required;
+    link: Attribute.Component<'micro.link'>;
+    theme: Attribute.Enumeration<['primary', 'secondary', 'disable']> &
+      Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface MicroLink extends Schema.Component {
   collectionName: 'components_micro_links';
   info: {
@@ -26,6 +40,16 @@ export interface MicroLink extends Schema.Component {
       Attribute.DefaultTo<true>;
     label: Attribute.String & Attribute.Required;
     target: Attribute.Enumeration<['_blank', '_self']> & Attribute.Required;
+  };
+}
+
+export interface MicroShortText extends Schema.Component {
+  collectionName: 'components_micro_short_texts';
+  info: {
+    displayName: 'short_text';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
   };
 }
 
@@ -84,7 +108,9 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'macro.link-icons': MacroLinkIcons;
+      'micro.cta': MicroCta;
       'micro.link': MicroLink;
+      'micro.short-text': MicroShortText;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }

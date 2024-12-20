@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_micro_short_texts",
+  "info": {
+    "displayName": "short_text"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
