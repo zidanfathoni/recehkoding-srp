@@ -362,6 +362,38 @@ export interface AdminUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiMeMe extends Schema.SingleType {
+  collectionName: 'us';
+  info: {
+    displayName: 'me';
+    pluralName: 'us';
+    singularName: 'me';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    avatar: Attribute.Media<'images'> & Attribute.Required;
+    city: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::me.me', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    description: Attribute.Text & Attribute.Required;
+    email: Attribute.Email & Attribute.Required;
+    fullname: Attribute.String & Attribute.Required;
+    phone: Attribute.String & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    title: Attribute.String & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<'api::me.me', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    username: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface ApiProfileProfile extends Schema.SingleType {
   collectionName: 'profiles';
   info: {
@@ -1421,6 +1453,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::me.me': ApiMeMe;
       'api::profile.profile': ApiProfileProfile;
       'plugin::comments.comment': PluginCommentsComment;
       'plugin::comments.comment-report': PluginCommentsCommentReport;
