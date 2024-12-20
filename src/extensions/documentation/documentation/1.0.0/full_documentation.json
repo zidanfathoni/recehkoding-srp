@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-12-20T02:38:57.152Z"
+    "x-generation-date": "2024-12-20T02:39:56.313Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6359,7 +6359,8 @@
               "email",
               "subject",
               "message",
-              "status"
+              "status",
+              "uuid"
             ],
             "type": "object",
             "properties": {
@@ -6384,6 +6385,9 @@
                   "progress",
                   "done"
                 ]
+              },
+              "uuid": {
+                "type": "string"
               },
               "sitemap_exclude": {
                 "type": "boolean"
@@ -6445,7 +6449,8 @@
           "email",
           "subject",
           "message",
-          "status"
+          "status",
+          "uuid"
         ],
         "properties": {
           "name": {
@@ -6469,6 +6474,9 @@
               "progress",
               "done"
             ]
+          },
+          "uuid": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",

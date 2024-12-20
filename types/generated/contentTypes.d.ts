@@ -669,6 +669,7 @@ export interface ApiTeamTeam extends Schema.CollectionType {
 export interface ApiTicketTicket extends Schema.CollectionType {
   collectionName: 'tickets';
   info: {
+    description: '';
     displayName: 'ticket';
     pluralName: 'tickets';
     singularName: 'ticket';
@@ -702,6 +703,9 @@ export interface ApiTicketTicket extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    uuid: Attribute.UID &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::field-uuid.uuid'>;
   };
 }
 
