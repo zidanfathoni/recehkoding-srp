@@ -1658,10 +1658,12 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
+    avatar: Attribute.Media<'images'> & Attribute.Required;
     blocked: Attribute.Boolean & Attribute.DefaultTo<false>;
+    city: Attribute.String & Attribute.Required;
+    company: Attribute.String & Attribute.Required;
     confirmationToken: Attribute.String & Attribute.Private;
     confirmed: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
@@ -1676,11 +1678,13 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    job_title: Attribute.String & Attribute.Required;
     password: Attribute.Password &
       Attribute.Private &
       Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    phone: Attribute.String & Attribute.Required;
     provider: Attribute.String;
     resetPasswordToken: Attribute.String & Attribute.Private;
     role: Attribute.Relation<
@@ -1704,6 +1708,10 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         minLength: 3;
       }>;
+    uuid: Attribute.UID &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::field-uuid.uuid'>;
+    website: Attribute.String & Attribute.Required;
   };
 }
 
