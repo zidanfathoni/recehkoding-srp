@@ -92,6 +92,11 @@
     "city": {
       "type": "string",
       "required": true
+    },
+    "uuid": {
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::strapi-advanced-uuid.uuid"
     }
   }
 }

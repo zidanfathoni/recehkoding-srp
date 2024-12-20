@@ -13,7 +13,6 @@
   "devDependencies": {},
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^3.0.9",
-    "@bn-digital/strapi-plugin-field-uuid": "^1.2.12",
     "@offset-dev/strapi-calendar": "^0.1.2",
     "@strapi/plugin-cloud": "4.25.18",
     "@strapi/plugin-color-picker": "^4.25.18",
@@ -27,6 +26,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
+    "strapi-advanced-uuid": "^1.4.2",
     "strapi-google-auth": "^0.2.1",
     "strapi-plugin-comments": "^2.3.2",
     "strapi-plugin-config-sync": "^3.0.0",

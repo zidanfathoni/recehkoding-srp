@@ -1946,6 +1946,9 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         minLength: 3;
       }>;
+    uuid: Attribute.UID &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
     website: Attribute.String & Attribute.Required;
   };
 }
