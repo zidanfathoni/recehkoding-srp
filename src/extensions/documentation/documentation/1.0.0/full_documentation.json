@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-12-20T03:17:08.097Z"
+    "x-generation-date": "2024-12-20T04:03:57.690Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6298,9 +6298,6 @@
                           }
                         }
                       },
-                      "uuid": {
-                        "type": "string"
-                      },
                       "job_title": {
                         "type": "string"
                       },
@@ -8834,9 +8831,6 @@
                             }
                           }
                         },
-                        "uuid": {
-                          "type": "string"
-                        },
                         "job_title": {
                           "type": "string"
                         },
@@ -9820,8 +9814,7 @@
               "email",
               "subject",
               "message",
-              "status",
-              "uuid"
+              "status"
             ],
             "type": "object",
             "properties": {
@@ -9846,9 +9839,6 @@
                   "progress",
                   "done"
                 ]
-              },
-              "uuid": {
-                "type": "string"
               },
               "sitemap_exclude": {
                 "type": "boolean"
@@ -9910,8 +9900,7 @@
           "email",
           "subject",
           "message",
-          "status",
-          "uuid"
+          "status"
         ],
         "properties": {
           "name": {
@@ -9935,9 +9924,6 @@
               "progress",
               "done"
             ]
-          },
-          "uuid": {
-            "type": "string"
           },
           "createdAt": {
             "type": "string",

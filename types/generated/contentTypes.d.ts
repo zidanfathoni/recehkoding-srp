@@ -940,9 +940,6 @@ export interface ApiTicketTicket extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    uuid: Attribute.UID &
-      Attribute.Required &
-      Attribute.CustomField<'plugin::field-uuid.uuid'>;
   };
 }
 
@@ -1949,9 +1946,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         minLength: 3;
       }>;
-    uuid: Attribute.UID &
-      Attribute.Required &
-      Attribute.CustomField<'plugin::field-uuid.uuid'>;
     website: Attribute.String & Attribute.Required;
   };
 }

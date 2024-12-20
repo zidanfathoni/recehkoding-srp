@@ -66,18 +66,12 @@
       "configurable": false
     },
     "avatar": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
-    },
-    "uuid": {
-      "type": "customField",
-      "regex": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
       "required": true,
-      "customField": "plugin::field-uuid.uuid"
+      "allowedTypes": [
+        "images"
+      ]
     },
     "job_title": {
       "type": "string",
