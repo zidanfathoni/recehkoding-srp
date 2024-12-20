@@ -628,6 +628,32 @@ export interface ApiSubscribeSubscribe extends Schema.CollectionType {
   };
 }
 
+export interface ApiTagTag extends Schema.CollectionType {
+  collectionName: 'tags';
+  info: {
+    displayName: 'tag';
+    pluralName: 'tags';
+    singularName: 'tag';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    slug: Attribute.UID<'api::tag.tag', 'title'> & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTeamTeam extends Schema.CollectionType {
   collectionName: 'teams';
   info: {
@@ -1736,6 +1762,7 @@ declare module '@strapi/types' {
       'api::skill.skill': ApiSkillSkill;
       'api::stack.stack': ApiStackStack;
       'api::subscribe.subscribe': ApiSubscribeSubscribe;
+      'api::tag.tag': ApiTagTag;
       'api::team.team': ApiTeamTeam;
       'api::ticket.ticket': ApiTicketTicket;
       'plugin::comments.comment': PluginCommentsComment;
