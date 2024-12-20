@@ -441,6 +441,46 @@ export interface ApiProfileProfile extends Schema.SingleType {
   };
 }
 
+export interface ApiStackStack extends Schema.CollectionType {
+  collectionName: 'stacks';
+  info: {
+    description: '';
+    displayName: 'stack';
+    pluralName: 'stacks';
+    singularName: 'stack';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::stack.stack',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    description: Attribute.Text & Attribute.Required;
+    icons_mobile: Attribute.String & Attribute.Required;
+    icons_web: Attribute.String &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::react-icons.icon'>;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    slug: Attribute.UID<'api::stack.stack', 'title'> & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::stack.stack',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginCommentsComment extends Schema.CollectionType {
   collectionName: 'comments_comment';
   info: {
@@ -1455,6 +1495,7 @@ declare module '@strapi/types' {
       'admin::user': AdminUser;
       'api::me.me': ApiMeMe;
       'api::profile.profile': ApiProfileProfile;
+      'api::stack.stack': ApiStackStack;
       'plugin::comments.comment': PluginCommentsComment;
       'plugin::comments.comment-report': PluginCommentsCommentReport;
       'plugin::content-releases.release': PluginContentReleasesRelease;
