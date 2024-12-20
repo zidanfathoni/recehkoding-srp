@@ -362,6 +362,36 @@ export interface AdminUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiFaqFaq extends Schema.CollectionType {
+  collectionName: 'faqs';
+  info: {
+    displayName: 'faq';
+    pluralName: 'faqs';
+    singularName: 'faq';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    answer: Attribute.Text & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    icons: Attribute.String &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::react-icons.icon'>;
+    publishedAt: Attribute.DateTime;
+    question: Attribute.Text & Attribute.Required & Attribute.Unique;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    slug: Attribute.UID<'api::faq.faq', 'question'> & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMeMe extends Schema.SingleType {
   collectionName: 'us';
   info: {
@@ -438,6 +468,53 @@ export interface ApiProfileProfile extends Schema.SingleType {
       Attribute.Private;
     vision: Attribute.Text & Attribute.Required;
     website: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface ApiSkillSkill extends Schema.CollectionType {
+  collectionName: 'skills';
+  info: {
+    displayName: 'skill';
+    pluralName: 'skills';
+    singularName: 'skill';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::skill.skill',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    level: Attribute.Enumeration<
+      ['beginner', 'intermediate', 'advanced', 'expert']
+    > &
+      Attribute.Required;
+    percentage: Attribute.Float & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    stack: Attribute.Relation<
+      'api::skill.skill',
+      'oneToOne',
+      'api::stack.stack'
+    >;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::skill.skill',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    users_permissions_user: Attribute.Relation<
+      'api::skill.skill',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 
@@ -1493,8 +1570,10 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::faq.faq': ApiFaqFaq;
       'api::me.me': ApiMeMe;
       'api::profile.profile': ApiProfileProfile;
+      'api::skill.skill': ApiSkillSkill;
       'api::stack.stack': ApiStackStack;
       'plugin::comments.comment': PluginCommentsComment;
       'plugin::comments.comment-report': PluginCommentsCommentReport;
