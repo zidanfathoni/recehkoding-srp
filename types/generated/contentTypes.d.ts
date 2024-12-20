@@ -431,9 +431,59 @@ export interface ApiBlogCategoryBlogCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiExperienceDetailExperienceDetail
+  extends Schema.CollectionType {
+  collectionName: 'experience_details';
+  info: {
+    displayName: 'experience-detail';
+    pluralName: 'experience-details';
+    singularName: 'experience-detail';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::experience-detail.experience-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    slug: Attribute.UID<'api::experience-detail.experience-detail', 'title'> &
+      Attribute.Required;
+    stacks: Attribute.Relation<
+      'api::experience-detail.experience-detail',
+      'oneToMany',
+      'api::stack.stack'
+    >;
+    title: Attribute.String & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::experience-detail.experience-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiExperienceExperience extends Schema.CollectionType {
   collectionName: 'experiences';
   info: {
+    description: '';
     displayName: 'experience';
     pluralName: 'experiences';
     singularName: 'experience';
@@ -452,6 +502,9 @@ export interface ApiExperienceExperience extends Schema.CollectionType {
       Attribute.Private;
     description: Attribute.Text & Attribute.Required;
     end_date: Attribute.Date & Attribute.Required;
+    is_detail: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
     is_present: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<true>;
@@ -1915,6 +1968,7 @@ declare module '@strapi/types' {
       'admin::user': AdminUser;
       'api::banner.banner': ApiBannerBanner;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
+      'api::experience-detail.experience-detail': ApiExperienceDetailExperienceDetail;
       'api::experience.experience': ApiExperienceExperience;
       'api::faq.faq': ApiFaqFaq;
       'api::feature.feature': ApiFeatureFeature;

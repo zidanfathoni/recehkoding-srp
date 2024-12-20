@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "experience_details",
+  "info": {
+    "singularName": "experience-detail",
+    "pluralName": "experience-details",
+    "displayName": "experience-detail"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "default"
+      },
+      "required": true,
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "stacks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::stack.stack"
+    }
+  }
+}

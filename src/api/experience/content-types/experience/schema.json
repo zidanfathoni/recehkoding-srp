@@ -4,7 +4,8 @@
   "info": {
     "singularName": "experience",
     "pluralName": "experiences",
-    "displayName": "experience"
+    "displayName": "experience",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -46,11 +47,16 @@
       "required": true
     },
     "thumbnail": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "is_detail": {
+      "type": "boolean",
+      "default": false,
       "required": true
     }
   }
