@@ -53,6 +53,18 @@ export interface MicroShortText extends Schema.Component {
   };
 }
 
+export interface MicroStack extends Schema.Component {
+  collectionName: 'components_micro_stacks';
+  info: {
+    displayName: 'stack';
+  };
+  attributes: {
+    description: Attribute.Text & Attribute.Required;
+    icons: Attribute.Media<'images'> & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface SharedMetaSocial extends Schema.Component {
   collectionName: 'components_shared_meta_socials';
   info: {
@@ -111,6 +123,7 @@ declare module '@strapi/types' {
       'micro.cta': MicroCta;
       'micro.link': MicroLink;
       'micro.short-text': MicroShortText;
+      'micro.stack': MicroStack;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }

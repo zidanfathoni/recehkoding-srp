@@ -4,7 +4,8 @@
   "info": {
     "singularName": "team",
     "pluralName": "teams",
-    "displayName": "team"
+    "displayName": "team",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -26,12 +27,12 @@
       "required": true
     },
     "thumbnail": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "goal": {
       "type": "text",
@@ -55,6 +56,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "plugin::users-permissions.user"
+    },
+    "stacks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::stack.stack"
     }
   }
 }

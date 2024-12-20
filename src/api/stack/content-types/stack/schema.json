@@ -20,19 +20,18 @@
       "type": "text",
       "required": true
     },
-    "icons_web": {
-      "type": "customField",
-      "required": true,
-      "customField": "plugin::react-icons.icon"
-    },
-    "icons_mobile": {
-      "type": "string",
-      "required": true
-    },
     "slug": {
       "type": "uid",
       "targetField": "title",
       "required": true
+    },
+    "icons_svg": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

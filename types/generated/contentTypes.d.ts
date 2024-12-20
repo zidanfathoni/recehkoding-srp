@@ -628,6 +628,41 @@ export interface ApiMeMe extends Schema.SingleType {
   };
 }
 
+export interface ApiProfileStackProfileStack extends Schema.SingleType {
+  collectionName: 'profile_stacks';
+  info: {
+    displayName: 'profile-stack';
+    pluralName: 'profile-stacks';
+    singularName: 'profile-stack';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::profile-stack.profile-stack',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    description: Attribute.Text & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    stack: Attribute.Component<'micro.stack', true>;
+    title: Attribute.String & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::profile-stack.profile-stack',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProfileProfile extends Schema.SingleType {
   collectionName: 'profiles';
   info: {
@@ -742,10 +777,7 @@ export interface ApiStackStack extends Schema.CollectionType {
     > &
       Attribute.Private;
     description: Attribute.Text & Attribute.Required;
-    icons_mobile: Attribute.String & Attribute.Required;
-    icons_web: Attribute.String &
-      Attribute.Required &
-      Attribute.CustomField<'plugin::react-icons.icon'>;
+    icons_svg: Attribute.Media<'images'> & Attribute.Required;
     publishedAt: Attribute.DateTime;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
@@ -828,6 +860,7 @@ export interface ApiTagTag extends Schema.CollectionType {
 export interface ApiTeamTeam extends Schema.CollectionType {
   collectionName: 'teams';
   info: {
+    description: '';
     displayName: 'team';
     pluralName: 'teams';
     singularName: 'team';
@@ -849,6 +882,11 @@ export interface ApiTeamTeam extends Schema.CollectionType {
       Attribute.Private &
       Attribute.DefaultTo<false>;
     slug: Attribute.UID<'api::team.team', 'title'> & Attribute.Required;
+    stacks: Attribute.Relation<
+      'api::team.team',
+      'oneToMany',
+      'api::stack.stack'
+    >;
     status: Attribute.Enumeration<['active', 'inactive']> & Attribute.Required;
     thumbnail: Attribute.Media<'images'> & Attribute.Required;
     title: Attribute.String & Attribute.Required & Attribute.Unique;
@@ -1916,6 +1954,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    fullname: Attribute.String & Attribute.Required;
     job_title: Attribute.String & Attribute.Required;
     password: Attribute.Password &
       Attribute.Private &
@@ -1949,6 +1988,9 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     uuid: Attribute.UID &
       Attribute.Required &
       Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
+    verified: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
     website: Attribute.String & Attribute.Required;
   };
 }
@@ -1970,6 +2012,7 @@ declare module '@strapi/types' {
       'api::faq.faq': ApiFaqFaq;
       'api::feature.feature': ApiFeatureFeature;
       'api::me.me': ApiMeMe;
+      'api::profile-stack.profile-stack': ApiProfileStackProfileStack;
       'api::profile.profile': ApiProfileProfile;
       'api::skill.skill': ApiSkillSkill;
       'api::stack.stack': ApiStackStack;

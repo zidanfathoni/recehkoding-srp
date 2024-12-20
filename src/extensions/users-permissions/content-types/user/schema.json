@@ -97,6 +97,15 @@
       "type": "customField",
       "required": true,
       "customField": "plugin::strapi-advanced-uuid.uuid"
+    },
+    "fullname": {
+      "type": "string",
+      "required": true
+    },
+    "verified": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }
