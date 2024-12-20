@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_micro_links",
+  "info": {
+    "displayName": "link"
+  },
+  "options": {},
+  "attributes": {
+    "href": {
+      "type": "text",
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "target": {
+      "type": "enumeration",
+      "enum": [
+        "_blank",
+        "_self"
+      ],
+      "required": true
+    },
+    "is_external": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}

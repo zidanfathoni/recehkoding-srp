@@ -1,5 +1,34 @@
 import type { Attribute, Schema } from '@strapi/strapi';
 
+export interface MacroLinkIcons extends Schema.Component {
+  collectionName: 'components_macro_link_icons';
+  info: {
+    displayName: 'LinkIcons';
+  };
+  attributes: {
+    icons_mobile: Attribute.String & Attribute.Required;
+    icons_web: Attribute.String &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::react-icons.icon'>;
+    link: Attribute.Component<'micro.link'>;
+  };
+}
+
+export interface MicroLink extends Schema.Component {
+  collectionName: 'components_micro_links';
+  info: {
+    displayName: 'link';
+  };
+  attributes: {
+    href: Attribute.Text & Attribute.Required;
+    is_external: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
+    label: Attribute.String & Attribute.Required;
+    target: Attribute.Enumeration<['_blank', '_self']> & Attribute.Required;
+  };
+}
+
 export interface SharedMetaSocial extends Schema.Component {
   collectionName: 'components_shared_meta_socials';
   info: {
@@ -54,6 +83,8 @@ export interface SharedSeo extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'macro.link-icons': MacroLinkIcons;
+      'micro.link': MicroLink;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }
