@@ -28,6 +28,7 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
     "strapi-google-auth": "^0.2.1",
+    "strapi-plugin-comments": "^2.3.2",
     "strapi-plugin-config-sync": "^3.0.0",
     "strapi-plugin-email-designer": "^2.2.1",
     "strapi-plugin-ezforms": "^0.1.7",

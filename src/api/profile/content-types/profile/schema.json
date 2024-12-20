@@ -1,0 +1,79 @@
+{
+  "kind": "singleType",
+  "collectionName": "profiles",
+  "info": {
+    "singularName": "profile",
+    "pluralName": "profiles",
+    "displayName": "profile"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "tagline": {
+      "type": "text",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "logo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "founded": {
+      "type": "date",
+      "required": true
+    },
+    "industry": {
+      "type": "string",
+      "required": true
+    },
+    "founder": {
+      "type": "string",
+      "required": true
+    },
+    "coreValues": {
+      "type": "text",
+      "required": true
+    },
+    "mission": {
+      "type": "text",
+      "required": true
+    },
+    "vision": {
+      "type": "text",
+      "required": true
+    },
+    "website": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "text",
+      "required": true
+    },
+    "latlong": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
