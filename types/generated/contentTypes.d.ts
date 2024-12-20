@@ -362,6 +362,39 @@ export interface AdminUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBannerBanner extends Schema.SingleType {
+  collectionName: 'banners';
+  info: {
+    displayName: 'banner';
+    pluralName: 'banners';
+    singularName: 'banner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::banner.banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    images: Attribute.Media<'images', true> & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::banner.banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFaqFaq extends Schema.CollectionType {
   collectionName: 'faqs';
   info: {
@@ -592,6 +625,44 @@ export interface ApiSubscribeSubscribe extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+  };
+}
+
+export interface ApiTeamTeam extends Schema.CollectionType {
+  collectionName: 'teams';
+  info: {
+    displayName: 'team';
+    pluralName: 'teams';
+    singularName: 'team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    color: Attribute.String &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::team.team', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    description: Attribute.Text & Attribute.Required;
+    goal: Attribute.Text & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    slug: Attribute.UID<'api::team.team', 'title'> & Attribute.Required;
+    status: Attribute.Enumeration<['active', 'inactive']> & Attribute.Required;
+    thumbnail: Attribute.Media<'images'> & Attribute.Required;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<'api::team.team', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    users_permissions_users: Attribute.Relation<
+      'api::team.team',
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 
@@ -1646,12 +1717,14 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::banner.banner': ApiBannerBanner;
       'api::faq.faq': ApiFaqFaq;
       'api::me.me': ApiMeMe;
       'api::profile.profile': ApiProfileProfile;
       'api::skill.skill': ApiSkillSkill;
       'api::stack.stack': ApiStackStack;
       'api::subscribe.subscribe': ApiSubscribeSubscribe;
+      'api::team.team': ApiTeamTeam;
       'api::ticket.ticket': ApiTicketTicket;
       'plugin::comments.comment': PluginCommentsComment;
       'plugin::comments.comment-report': PluginCommentsCommentReport;
