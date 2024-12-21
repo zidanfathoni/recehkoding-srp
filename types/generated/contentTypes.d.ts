@@ -953,6 +953,7 @@ export interface ApiTicketTicket extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
+    answer: Attribute.Component<'micro.ticket-answer', true>;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::ticket.ticket',
@@ -978,6 +979,14 @@ export interface ApiTicketTicket extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    users_permissions_user: Attribute.Relation<
+      'api::ticket.ticket',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    uuid: Attribute.UID &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
   };
 }
 

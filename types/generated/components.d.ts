@@ -65,6 +65,19 @@ export interface MicroStack extends Schema.Component {
   };
 }
 
+export interface MicroTicketAnswer extends Schema.Component {
+  collectionName: 'components_micro_ticket_answers';
+  info: {
+    displayName: 'ticket-answer';
+  };
+  attributes: {
+    answer: Attribute.Text & Attribute.Required;
+    role: Attribute.Enumeration<['admin', 'user']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'user'>;
+  };
+}
+
 export interface SharedMetaSocial extends Schema.Component {
   collectionName: 'components_shared_meta_socials';
   info: {
@@ -124,6 +137,7 @@ declare module '@strapi/types' {
       'micro.link': MicroLink;
       'micro.short-text': MicroShortText;
       'micro.stack': MicroStack;
+      'micro.ticket-answer': MicroTicketAnswer;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }
