@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-12-20T18:16:03.038Z"
+    "x-generation-date": "2024-12-21T15:31:03.623Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -9480,6 +9480,12 @@
                   "example": "string or id"
                 }
               },
+              "task": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MicroTeamTaskComponent"
+                }
+              },
               "sitemap_exclude": {
                 "type": "boolean"
               }
@@ -10842,6 +10848,12 @@
               }
             }
           },
+          "task": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MicroTeamTaskComponent"
+            }
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -10912,6 +10924,63 @@
           },
           "meta": {
             "type": "object"
+          }
+        }
+      },
+      "MicroTeamTaskComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "to do",
+              "on progress",
+              "on review",
+              "done",
+              "cancelled"
+            ]
+          },
+          "deadline": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "percentage": {
+            "type": "number",
+            "format": "float"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "users_permissions_user": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
           }
         }
       },

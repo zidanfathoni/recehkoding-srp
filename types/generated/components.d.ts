@@ -65,6 +65,31 @@ export interface MicroStack extends Schema.Component {
   };
 }
 
+export interface MicroTeamTask extends Schema.Component {
+  collectionName: 'components_micro_team_tasks';
+  info: {
+    displayName: 'team-task';
+  };
+  attributes: {
+    deadline: Attribute.DateTime & Attribute.Required;
+    name: Attribute.String & Attribute.Required;
+    notes: Attribute.Text & Attribute.Required;
+    percentage: Attribute.Decimal & Attribute.Required;
+    priority: Attribute.Enumeration<['low', 'medium', 'high']> &
+      Attribute.Required;
+    status: Attribute.Enumeration<
+      ['to do', 'on progress', 'on review', 'done', 'cancelled']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'to do'>;
+    users_permissions_user: Attribute.Relation<
+      'micro.team-task',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface MicroTicketAnswer extends Schema.Component {
   collectionName: 'components_micro_ticket_answers';
   info: {
@@ -137,6 +162,7 @@ declare module '@strapi/types' {
       'micro.link': MicroLink;
       'micro.short-text': MicroShortText;
       'micro.stack': MicroStack;
+      'micro.team-task': MicroTeamTask;
       'micro.ticket-answer': MicroTicketAnswer;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;

@@ -888,6 +888,7 @@ export interface ApiTeamTeam extends Schema.CollectionType {
       'api::stack.stack'
     >;
     status: Attribute.Enumeration<['active', 'inactive']> & Attribute.Required;
+    task: Attribute.Component<'micro.team-task', true>;
     thumbnail: Attribute.Media<'images'> & Attribute.Required;
     title: Attribute.String & Attribute.Required & Attribute.Unique;
     updatedAt: Attribute.DateTime;
