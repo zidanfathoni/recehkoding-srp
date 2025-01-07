@@ -4,7 +4,8 @@
   "info": {
     "singularName": "profile",
     "pluralName": "profiles",
-    "displayName": "profile"
+    "displayName": "profile",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -24,12 +25,12 @@
       "required": true
     },
     "logo": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "founded": {
       "type": "date",
@@ -74,6 +75,11 @@
     "latlong": {
       "type": "string",
       "required": true
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

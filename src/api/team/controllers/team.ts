@@ -15,6 +15,7 @@ export default factories.createCoreController('api::team.team', ({ strapi }) => 
           'users_permissions_users.avatar',
           'stacks.icons_svg',
           'task.users_permissions_users',
+          'portfolios.thumbnail',
         ], // Opsional: untuk memuat relasi user
       });
       var data = {

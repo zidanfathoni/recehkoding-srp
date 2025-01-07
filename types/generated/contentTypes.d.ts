@@ -431,51 +431,39 @@ export interface ApiBlogCategoryBlogCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiExperienceDetailExperienceDetail
-  extends Schema.CollectionType {
-  collectionName: 'experience_details';
+export interface ApiBlogBlog extends Schema.CollectionType {
+  collectionName: 'blogs';
   info: {
-    displayName: 'experience-detail';
-    pluralName: 'experience-details';
-    singularName: 'experience-detail';
+    description: '';
+    displayName: 'blog';
+    pluralName: 'blogs';
+    singularName: 'blog';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    content: Attribute.RichText &
-      Attribute.Required &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'default';
-        }
-      >;
-    createdAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::experience-detail.experience-detail',
+    blog_category: Attribute.Relation<
+      'api::blog.blog',
       'oneToOne',
-      'admin::user'
-    > &
+      'api::blog-category.blog-category'
+    >;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
       Attribute.Private;
+    description: Attribute.Text & Attribute.Required;
+    detail: Attribute.Component<'content.blog-detail'> & Attribute.Required;
     publishedAt: Attribute.DateTime;
+    seo: Attribute.Component<'shared.seo'> & Attribute.Required;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
-    slug: Attribute.UID<'api::experience-detail.experience-detail', 'title'> &
-      Attribute.Required;
-    stacks: Attribute.Relation<
-      'api::experience-detail.experience-detail',
-      'oneToMany',
-      'api::stack.stack'
-    >;
+    slug: Attribute.UID<'api::blog.blog', 'title'> & Attribute.Required;
+    tags: Attribute.Relation<'api::blog.blog', 'oneToMany', 'api::tag.tag'>;
+    thumbnail: Attribute.Media<'images'> & Attribute.Required;
     title: Attribute.String & Attribute.Required;
     updatedAt: Attribute.DateTime;
-    updatedBy: Attribute.Relation<
-      'api::experience-detail.experience-detail',
-      'oneToOne',
-      'admin::user'
-    > &
+    updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -493,6 +481,13 @@ export interface ApiExperienceExperience extends Schema.CollectionType {
   };
   attributes: {
     company: Attribute.String & Attribute.Required;
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::experience.experience',
@@ -500,7 +495,6 @@ export interface ApiExperienceExperience extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    description: Attribute.Text & Attribute.Required;
     end_date: Attribute.Date & Attribute.Required;
     is_detail: Attribute.Boolean &
       Attribute.Required &
@@ -599,6 +593,7 @@ export interface ApiFeatureFeature extends Schema.CollectionType {
 export interface ApiMeMe extends Schema.SingleType {
   collectionName: 'us';
   info: {
+    description: '';
     displayName: 'me';
     pluralName: 'us';
     singularName: 'me';
@@ -615,8 +610,10 @@ export interface ApiMeMe extends Schema.SingleType {
     description: Attribute.Text & Attribute.Required;
     email: Attribute.Email & Attribute.Required;
     fullname: Attribute.String & Attribute.Required;
+    header: Attribute.Component<'micro.header'> & Attribute.Required;
     phone: Attribute.String & Attribute.Required;
     publishedAt: Attribute.DateTime;
+    seo: Attribute.Component<'shared.seo'>;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
@@ -625,6 +622,94 @@ export interface ApiMeMe extends Schema.SingleType {
     updatedBy: Attribute.Relation<'api::me.me', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     username: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface ApiPortfolioPortfolio extends Schema.CollectionType {
+  collectionName: 'portfolios';
+  info: {
+    description: '';
+    displayName: 'Portfolio';
+    pluralName: 'portfolios';
+    singularName: 'portfolio';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::portfolio.portfolio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    description: Attribute.Text & Attribute.Required;
+    detail: Attribute.Component<'content.portfolio-detail'> &
+      Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    seo: Attribute.Component<'shared.seo'> & Attribute.Required;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    slug: Attribute.UID<'api::portfolio.portfolio', 'title'> &
+      Attribute.Required;
+    status: Attribute.Enumeration<['pending', 'progress', 'completed']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'pending'>;
+    thumbnail: Attribute.Media<'images'> & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    type: Attribute.Enumeration<['personal', 'team']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'personal'>;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::portfolio.portfolio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPricingPricing extends Schema.CollectionType {
+  collectionName: 'pricings';
+  info: {
+    displayName: 'pricing';
+    pluralName: 'pricings';
+    singularName: 'pricing';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pricing.pricing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    cycle: Attribute.Enumeration<['monthly', 'annualy']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'monthly'>;
+    description: Attribute.Text & Attribute.Required;
+    features: Attribute.Component<'micro.point', true> & Attribute.Required;
+    price: Attribute.Float & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    title: Attribute.String & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::pricing.pricing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    uuid: Attribute.UID &
+      Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
   };
 }
 
@@ -663,9 +748,49 @@ export interface ApiProfileStackProfileStack extends Schema.SingleType {
   };
 }
 
+export interface ApiProfileTeamProfileTeam extends Schema.SingleType {
+  collectionName: 'profile_teams';
+  info: {
+    displayName: 'profile-team';
+    pluralName: 'profile-teams';
+    singularName: 'profile-team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::profile-team.profile-team',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    description: Attribute.Text & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    title: Attribute.String & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::profile-team.profile-team',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    users_permissions_users: Attribute.Relation<
+      'api::profile-team.profile-team',
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface ApiProfileProfile extends Schema.SingleType {
   collectionName: 'profiles';
   info: {
+    description: '';
     displayName: 'profile';
     pluralName: 'profiles';
     singularName: 'profile';
@@ -694,6 +819,7 @@ export interface ApiProfileProfile extends Schema.SingleType {
     name: Attribute.String & Attribute.Required;
     phone: Attribute.String & Attribute.Required;
     publishedAt: Attribute.DateTime;
+    seo: Attribute.Component<'shared.seo'>;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
@@ -877,6 +1003,11 @@ export interface ApiTeamTeam extends Schema.CollectionType {
       Attribute.Private;
     description: Attribute.Text & Attribute.Required;
     goal: Attribute.Text & Attribute.Required;
+    portfolios: Attribute.Relation<
+      'api::team.team',
+      'oneToMany',
+      'api::portfolio.portfolio'
+    >;
     publishedAt: Attribute.DateTime;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
@@ -1972,6 +2103,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
         minLength: 6;
       }>;
     phone: Attribute.String & Attribute.Required;
+    pricing: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::pricing.pricing'
+    >;
     provider: Attribute.String;
     resetPasswordToken: Attribute.String & Attribute.Private;
     role: Attribute.Relation<
@@ -2017,12 +2153,15 @@ declare module '@strapi/types' {
       'admin::user': AdminUser;
       'api::banner.banner': ApiBannerBanner;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
-      'api::experience-detail.experience-detail': ApiExperienceDetailExperienceDetail;
+      'api::blog.blog': ApiBlogBlog;
       'api::experience.experience': ApiExperienceExperience;
       'api::faq.faq': ApiFaqFaq;
       'api::feature.feature': ApiFeatureFeature;
       'api::me.me': ApiMeMe;
+      'api::portfolio.portfolio': ApiPortfolioPortfolio;
+      'api::pricing.pricing': ApiPricingPricing;
       'api::profile-stack.profile-stack': ApiProfileStackProfileStack;
+      'api::profile-team.profile-team': ApiProfileTeamProfileTeam;
       'api::profile.profile': ApiProfileProfile;
       'api::skill.skill': ApiSkillSkill;
       'api::stack.stack': ApiStackStack;

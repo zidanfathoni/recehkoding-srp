@@ -1,7 +1,8 @@
 {
   "collectionName": "components_micro_stacks",
   "info": {
-    "displayName": "stack"
+    "displayName": "stack",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -14,12 +15,17 @@
       "required": true
     },
     "icons": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "reacticon": {
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::react-icons.icon"
     }
   }
 }

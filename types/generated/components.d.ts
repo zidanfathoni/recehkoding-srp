@@ -1,5 +1,68 @@
 import type { Attribute, Schema } from '@strapi/strapi';
 
+export interface ContentBlogDetail extends Schema.Component {
+  collectionName: 'components_content_blog_details';
+  info: {
+    displayName: 'blog-detail';
+  };
+  attributes: {
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+  };
+}
+
+export interface ContentContentBase extends Schema.Component {
+  collectionName: 'components_content_content_bases';
+  info: {
+    displayName: 'content-base';
+  };
+  attributes: {
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+  };
+}
+
+export interface ContentPortfolioDetail extends Schema.Component {
+  collectionName: 'components_content_portfolio_details';
+  info: {
+    displayName: 'portfolio-detail';
+  };
+  attributes: {
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+    end_date: Attribute.Date & Attribute.Required;
+    link: Attribute.Text & Attribute.Required;
+    stacks: Attribute.Relation<
+      'content.portfolio-detail',
+      'oneToMany',
+      'api::stack.stack'
+    >;
+    start_date: Attribute.Date & Attribute.Required;
+    tags: Attribute.Relation<
+      'content.portfolio-detail',
+      'oneToMany',
+      'api::tag.tag'
+    >;
+  };
+}
+
 export interface MacroLinkIcons extends Schema.Component {
   collectionName: 'components_macro_link_icons';
   info: {
@@ -28,6 +91,20 @@ export interface MicroCta extends Schema.Component {
   };
 }
 
+export interface MicroHeader extends Schema.Component {
+  collectionName: 'components_micro_headers';
+  info: {
+    displayName: 'header';
+  };
+  attributes: {
+    description: Attribute.Text & Attribute.Required;
+    theme: Attribute.Enumeration<['primary', 'secondary', 'disable']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'primary'>;
+    title: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface MicroLink extends Schema.Component {
   collectionName: 'components_micro_links';
   info: {
@@ -40,6 +117,17 @@ export interface MicroLink extends Schema.Component {
       Attribute.DefaultTo<true>;
     label: Attribute.String & Attribute.Required;
     target: Attribute.Enumeration<['_blank', '_self']> & Attribute.Required;
+  };
+}
+
+export interface MicroPoint extends Schema.Component {
+  collectionName: 'components_micro_points';
+  info: {
+    displayName: 'point';
+  };
+  attributes: {
+    description: Attribute.Text & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
   };
 }
 
@@ -56,11 +144,15 @@ export interface MicroShortText extends Schema.Component {
 export interface MicroStack extends Schema.Component {
   collectionName: 'components_micro_stacks';
   info: {
+    description: '';
     displayName: 'stack';
   };
   attributes: {
     description: Attribute.Text & Attribute.Required;
     icons: Attribute.Media<'images'> & Attribute.Required;
+    reacticon: Attribute.String &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::react-icons.icon'>;
     title: Attribute.String & Attribute.Required;
   };
 }
@@ -157,9 +249,14 @@ export interface SharedSeo extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'content.blog-detail': ContentBlogDetail;
+      'content.content-base': ContentContentBase;
+      'content.portfolio-detail': ContentPortfolioDetail;
       'macro.link-icons': MacroLinkIcons;
       'micro.cta': MicroCta;
+      'micro.header': MicroHeader;
       'micro.link': MicroLink;
+      'micro.point': MicroPoint;
       'micro.short-text': MicroShortText;
       'micro.stack': MicroStack;
       'micro.team-task': MicroTeamTask;

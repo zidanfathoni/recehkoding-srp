@@ -42,10 +42,6 @@
       "default": true,
       "required": true
     },
-    "description": {
-      "type": "text",
-      "required": true
-    },
     "thumbnail": {
       "type": "media",
       "multiple": false,
@@ -58,6 +54,13 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "default"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
     }
   }
 }

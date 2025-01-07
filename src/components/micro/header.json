@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_micro_headers",
+  "info": {
+    "displayName": "header"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "theme": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "disable"
+      ],
+      "required": true,
+      "default": "primary"
+    }
+  }
+}

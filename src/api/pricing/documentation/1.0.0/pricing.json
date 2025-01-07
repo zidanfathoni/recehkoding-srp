@@ -1,5 +1,5 @@
 {
-  "/experience-details": {
+  "/pricings": {
     "get": {
       "responses": {
         "200": {
@@ -7,7 +7,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ExperienceDetailListResponse"
+                "$ref": "#/components/schemas/PricingListResponse"
               }
             }
           }
@@ -64,7 +64,7 @@
         }
       },
       "tags": [
-        "Experience-detail"
+        "Pricing"
       ],
       "parameters": [
         {
@@ -170,7 +170,7 @@
           }
         }
       ],
-      "operationId": "get/experience-details"
+      "operationId": "get/pricings"
     },
     "post": {
       "responses": {
@@ -179,7 +179,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ExperienceDetailResponse"
+                "$ref": "#/components/schemas/PricingResponse"
               }
             }
           }
@@ -236,23 +236,23 @@
         }
       },
       "tags": [
-        "Experience-detail"
+        "Pricing"
       ],
       "parameters": [],
-      "operationId": "post/experience-details",
+      "operationId": "post/pricings",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ExperienceDetailRequest"
+              "$ref": "#/components/schemas/PricingRequest"
             }
           }
         }
       }
     }
   },
-  "/experience-details/{id}": {
+  "/pricings/{id}": {
     "get": {
       "responses": {
         "200": {
@@ -260,7 +260,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ExperienceDetailResponse"
+                "$ref": "#/components/schemas/PricingResponse"
               }
             }
           }
@@ -317,7 +317,7 @@
         }
       },
       "tags": [
-        "Experience-detail"
+        "Pricing"
       ],
       "parameters": [
         {
@@ -331,7 +331,7 @@
           }
         }
       ],
-      "operationId": "get/experience-details/{id}"
+      "operationId": "get/pricings/{id}"
     },
     "put": {
       "responses": {
@@ -340,7 +340,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ExperienceDetailResponse"
+                "$ref": "#/components/schemas/PricingResponse"
               }
             }
           }
@@ -397,7 +397,7 @@
         }
       },
       "tags": [
-        "Experience-detail"
+        "Pricing"
       ],
       "parameters": [
         {
@@ -411,13 +411,13 @@
           }
         }
       ],
-      "operationId": "put/experience-details/{id}",
+      "operationId": "put/pricings/{id}",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ExperienceDetailRequest"
+              "$ref": "#/components/schemas/PricingRequest"
             }
           }
         }
@@ -488,7 +488,7 @@
         }
       },
       "tags": [
-        "Experience-detail"
+        "Pricing"
       ],
       "parameters": [
         {
@@ -502,7 +502,7 @@
           }
         }
       ],
-      "operationId": "delete/experience-details/{id}"
+      "operationId": "delete/pricings/{id}"
     }
   }
 }
