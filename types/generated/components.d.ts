@@ -108,6 +108,7 @@ export interface MicroHeader extends Schema.Component {
 export interface MicroLink extends Schema.Component {
   collectionName: 'components_micro_links';
   info: {
+    description: '';
     displayName: 'link';
   };
   attributes: {
@@ -117,6 +118,9 @@ export interface MicroLink extends Schema.Component {
       Attribute.DefaultTo<true>;
     label: Attribute.String & Attribute.Required;
     target: Attribute.Enumeration<['_blank', '_self']> & Attribute.Required;
+    theme: Attribute.Enumeration<['primary', 'secondary', 'disable']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'primary'>;
   };
 }
 

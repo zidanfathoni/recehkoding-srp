@@ -1122,6 +1122,43 @@ export interface ApiTicketTicket extends Schema.CollectionType {
   };
 }
 
+export interface ApiWelcomeHeroWelcomeHero extends Schema.CollectionType {
+  collectionName: 'welcome_heroes';
+  info: {
+    displayName: 'welcome-hero';
+    pluralName: 'welcome-heroes';
+    singularName: 'welcome-hero';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    button: Attribute.Component<'micro.link', true> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::welcome-hero.welcome-hero',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    description: Attribute.Text & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    tag: Attribute.String & Attribute.Required;
+    thumbnail: Attribute.Media<'images'> & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::welcome-hero.welcome-hero',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginCommentsComment extends Schema.CollectionType {
   collectionName: 'comments_comment';
   info: {
@@ -1569,6 +1606,110 @@ export interface PluginI18NLocale extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+  };
+}
+
+export interface PluginMenusMenu extends Schema.CollectionType {
+  collectionName: 'menus';
+  info: {
+    displayName: 'Menu';
+    name: 'Menu';
+    pluralName: 'menus';
+    singularName: 'menu';
+    tableName: 'menus';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::menus.menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    items: Attribute.Relation<
+      'plugin::menus.menu',
+      'oneToMany',
+      'plugin::menus.menu-item'
+    >;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    slug: Attribute.UID<'plugin::menus.menu', 'title'> & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'plugin::menus.menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginMenusMenuItem extends Schema.CollectionType {
+  collectionName: 'menu_items';
+  info: {
+    displayName: 'Menu Item';
+    name: 'MenuItem';
+    pluralName: 'menu-items';
+    singularName: 'menu-item';
+    tableName: 'menu_items';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::menus.menu-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    order: Attribute.Integer;
+    parent: Attribute.Relation<
+      'plugin::menus.menu-item',
+      'oneToOne',
+      'plugin::menus.menu-item'
+    >;
+    root_menu: Attribute.Relation<
+      'plugin::menus.menu-item',
+      'manyToOne',
+      'plugin::menus.menu'
+    > &
+      Attribute.Required;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    target: Attribute.Enumeration<['_blank', '_parent', '_self', '_top']>;
+    title: Attribute.String & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'plugin::menus.menu-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    url: Attribute.String;
   };
 }
 
@@ -2170,6 +2311,7 @@ declare module '@strapi/types' {
       'api::team.team': ApiTeamTeam;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::ticket.ticket': ApiTicketTicket;
+      'api::welcome-hero.welcome-hero': ApiWelcomeHeroWelcomeHero;
       'plugin::comments.comment': PluginCommentsComment;
       'plugin::comments.comment-report': PluginCommentsCommentReport;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -2178,6 +2320,8 @@ declare module '@strapi/types' {
       'plugin::ezforms.recipient': PluginEzformsRecipient;
       'plugin::ezforms.submission': PluginEzformsSubmission;
       'plugin::i18n.locale': PluginI18NLocale;
+      'plugin::menus.menu': PluginMenusMenu;
+      'plugin::menus.menu-item': PluginMenusMenuItem;
       'plugin::publisher.action': PluginPublisherAction;
       'plugin::react-icons.iconlibrary': PluginReactIconsIconlibrary;
       'plugin::sitemap.sitemap': PluginSitemapSitemap;
