@@ -3,7 +3,7 @@ module.exports = ({ env }) => ({
   documentation: {
     config: {
       'x-strapi-config': {
-        plugins: ['menus', 'upload', 'users-permissions'],
+        plugins: ['menus'],
       },
     },
   },
