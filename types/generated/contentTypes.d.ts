@@ -525,6 +525,7 @@ export interface ApiExperienceExperience extends Schema.CollectionType {
 export interface ApiFaqFaq extends Schema.CollectionType {
   collectionName: 'faqs';
   info: {
+    description: '';
     displayName: 'faq';
     pluralName: 'faqs';
     singularName: 'faq';
@@ -534,6 +535,11 @@ export interface ApiFaqFaq extends Schema.CollectionType {
   };
   attributes: {
     answer: Attribute.Text & Attribute.Required;
+    category: Attribute.Enumeration<
+      ['Getting Started', 'Billing', 'Pricing', 'Support']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Getting Started'>;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
       Attribute.Private;
@@ -590,6 +596,44 @@ export interface ApiFeatureFeature extends Schema.CollectionType {
   };
 }
 
+export interface ApiHomePageHomePage extends Schema.SingleType {
+  collectionName: 'home_pages';
+  info: {
+    displayName: 'home-page';
+    pluralName: 'home-pages';
+    singularName: 'home-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    links: Attribute.Component<'macro.link-icons', true>;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    stacks: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToMany',
+      'api::stack.stack'
+    >;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMeMe extends Schema.SingleType {
   collectionName: 'us';
   info: {
@@ -610,7 +654,6 @@ export interface ApiMeMe extends Schema.SingleType {
     description: Attribute.Text & Attribute.Required;
     email: Attribute.Email & Attribute.Required;
     fullname: Attribute.String & Attribute.Required;
-    header: Attribute.Component<'micro.header'> & Attribute.Required;
     phone: Attribute.String & Attribute.Required;
     publishedAt: Attribute.DateTime;
     seo: Attribute.Component<'shared.seo'>;
@@ -675,6 +718,7 @@ export interface ApiPortfolioPortfolio extends Schema.CollectionType {
 export interface ApiPricingPricing extends Schema.CollectionType {
   collectionName: 'pricings';
   info: {
+    description: '';
     displayName: 'pricing';
     pluralName: 'pricings';
     singularName: 'pricing';
@@ -683,6 +727,7 @@ export interface ApiPricingPricing extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
+    badge: Attribute.String;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::pricing.pricing',
@@ -690,12 +735,14 @@ export interface ApiPricingPricing extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    cycle: Attribute.Enumeration<['monthly', 'annualy']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'monthly'>;
     description: Attribute.Text & Attribute.Required;
-    features: Attribute.Component<'micro.point', true> & Attribute.Required;
-    price: Attribute.Float & Attribute.Required;
+    features: Attribute.Component<'micro.features', true> & Attribute.Required;
+    highlight: Attribute.Boolean;
+    icons: Attribute.String &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::react-icons.icon'>;
+    priceAnnualy: Attribute.Integer & Attribute.Required;
+    priceMonthly: Attribute.Integer & Attribute.Required;
     publishedAt: Attribute.DateTime;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
@@ -1119,43 +1166,6 @@ export interface ApiTicketTicket extends Schema.CollectionType {
     uuid: Attribute.UID &
       Attribute.Required &
       Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
-  };
-}
-
-export interface ApiWelcomeHeroWelcomeHero extends Schema.CollectionType {
-  collectionName: 'welcome_heroes';
-  info: {
-    displayName: 'welcome-hero';
-    pluralName: 'welcome-heroes';
-    singularName: 'welcome-hero';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    button: Attribute.Component<'micro.link', true> & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::welcome-hero.welcome-hero',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    description: Attribute.Text & Attribute.Required;
-    publishedAt: Attribute.DateTime;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
-    tag: Attribute.String & Attribute.Required;
-    thumbnail: Attribute.Media<'images'> & Attribute.Required;
-    title: Attribute.String & Attribute.Required;
-    updatedAt: Attribute.DateTime;
-    updatedBy: Attribute.Relation<
-      'api::welcome-hero.welcome-hero',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
   };
 }
 
@@ -2298,6 +2308,7 @@ declare module '@strapi/types' {
       'api::experience.experience': ApiExperienceExperience;
       'api::faq.faq': ApiFaqFaq;
       'api::feature.feature': ApiFeatureFeature;
+      'api::home-page.home-page': ApiHomePageHomePage;
       'api::me.me': ApiMeMe;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
       'api::pricing.pricing': ApiPricingPricing;
@@ -2311,7 +2322,6 @@ declare module '@strapi/types' {
       'api::team.team': ApiTeamTeam;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::ticket.ticket': ApiTicketTicket;
-      'api::welcome-hero.welcome-hero': ApiWelcomeHeroWelcomeHero;
       'plugin::comments.comment': PluginCommentsComment;
       'plugin::comments.comment-report': PluginCommentsCommentReport;
       'plugin::content-releases.release': PluginContentReleasesRelease;

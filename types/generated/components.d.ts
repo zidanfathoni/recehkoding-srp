@@ -91,6 +91,20 @@ export interface MicroCta extends Schema.Component {
   };
 }
 
+export interface MicroFeatures extends Schema.Component {
+  collectionName: 'components_micro_features';
+  info: {
+    displayName: 'features';
+  };
+  attributes: {
+    description: Attribute.Text & Attribute.Required;
+    included: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
+    name: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface MicroHeader extends Schema.Component {
   collectionName: 'components_micro_headers';
   info: {
@@ -258,6 +272,7 @@ declare module '@strapi/types' {
       'content.portfolio-detail': ContentPortfolioDetail;
       'macro.link-icons': MacroLinkIcons;
       'micro.cta': MicroCta;
+      'micro.features': MicroFeatures;
       'micro.header': MicroHeader;
       'micro.link': MicroLink;
       'micro.point': MicroPoint;

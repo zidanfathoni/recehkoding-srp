@@ -48,12 +48,6 @@
       "type": "text",
       "required": true
     },
-    "header": {
-      "type": "component",
-      "repeatable": false,
-      "component": "micro.header",
-      "required": true
-    },
     "seo": {
       "type": "component",
       "repeatable": false,

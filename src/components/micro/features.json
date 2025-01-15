@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_micro_features",
+  "info": {
+    "displayName": "features"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "included": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}

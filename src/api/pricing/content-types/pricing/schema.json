@@ -4,7 +4,8 @@
   "info": {
     "singularName": "pricing",
     "pluralName": "pricings",
-    "displayName": "pricing"
+    "displayName": "pricing",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,27 +20,34 @@
       "type": "text",
       "required": true
     },
-    "cycle": {
-      "type": "enumeration",
-      "enum": [
-        "monthly",
-        "annualy"
-      ],
-      "required": true,
-      "default": "monthly"
-    },
-    "price": {
-      "type": "float",
-      "required": true
-    },
     "uuid": {
       "type": "customField",
       "customField": "plugin::strapi-advanced-uuid.uuid"
     },
+    "priceMonthly": {
+      "type": "integer",
+      "required": true
+    },
+    "priceAnnualy": {
+      "type": "integer",
+      "required": true
+    },
+    "icons": {
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::react-icons.icon"
+    },
+    "highlight": {
+      "type": "boolean",
+      "required": false
+    },
+    "badge": {
+      "type": "string"
+    },
     "features": {
       "type": "component",
       "repeatable": true,
-      "component": "micro.point",
+      "component": "micro.features",
       "required": true
     }
   }
