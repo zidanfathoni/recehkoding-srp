@@ -46,8 +46,8 @@ module.exports = ({ env }) => ({
         secure: false,           // Gunakan true untuk port 465, selain itu false
         auth: {
           user: 'recehkoding@gmail.com', // Email SMTP Anda
-          clientId: '127546448959-l2inpe2i22oo0vnn3r9fc24s53v5m8rl.apps.googleusercontent.com',
-          clientSecret: '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',
+          clientId: env('CLIENT_ID', 'client-id'),
+          clientSecret: env('CLIENT_SECRET', 'client-secret'),
         },
       },
       settings: {
