@@ -1,0 +1,14 @@
+{
+   "GET /api/banner": {
+      "content-type": "api::banner.banner",
+      "populate": {
+         "images": {
+            "fields": [
+               "url",
+               "height",
+               "width"
+            ]
+         }
+      }
+   }
+}

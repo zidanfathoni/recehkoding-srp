@@ -37,6 +37,12 @@ module.exports = ({ env }) => ({
       endpoint: "http://localhost:1337/graphql", // OPTIONAL - endpoint has to be accessible from the browser
     }
   },
+  'protected-populate': {
+    enabled: true,
+    config: {
+      ['auto-populate']: true,
+    },
+  },
   email: {
     config: {
       provider: 'nodemailer',
