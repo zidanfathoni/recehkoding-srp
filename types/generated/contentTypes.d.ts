@@ -845,9 +845,26 @@ export interface ApiProfileProfile extends Schema.SingleType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    address: Attribute.Text & Attribute.Required;
-    coreValues: Attribute.Text & Attribute.Required;
+    address: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    coreValues: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::profile.profile',
@@ -855,22 +872,99 @@ export interface ApiProfileProfile extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    description: Attribute.String & Attribute.Required;
-    email: Attribute.Email & Attribute.Required;
-    founded: Attribute.Date & Attribute.Required;
-    founder: Attribute.String & Attribute.Required;
-    industry: Attribute.String & Attribute.Required;
-    latlong: Attribute.String & Attribute.Required;
-    logo: Attribute.Media<'images'> & Attribute.Required;
-    mission: Attribute.Text & Attribute.Required;
-    name: Attribute.String & Attribute.Required;
-    phone: Attribute.String & Attribute.Required;
+    description: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    email: Attribute.Email &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    founded: Attribute.Date &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    founder: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    industry: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    latlong: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Attribute.String;
+    localizations: Attribute.Relation<
+      'api::profile.profile',
+      'oneToMany',
+      'api::profile.profile'
+    >;
+    logo: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    mission: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    phone: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Attribute.DateTime;
-    seo: Attribute.Component<'shared.seo'>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
-    tagline: Attribute.Text & Attribute.Required;
+    tagline: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::profile.profile',
@@ -878,8 +972,20 @@ export interface ApiProfileProfile extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    vision: Attribute.Text & Attribute.Required;
-    website: Attribute.String & Attribute.Required;
+    vision: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    website: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
@@ -1166,6 +1272,50 @@ export interface ApiTicketTicket extends Schema.CollectionType {
     uuid: Attribute.UID &
       Attribute.Required &
       Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
+  };
+}
+
+export interface ApiZidanfathProjectZidanfathProject
+  extends Schema.CollectionType {
+  collectionName: 'zidanfath_projects';
+  info: {
+    displayName: 'zidanfath-project';
+    pluralName: 'zidanfath-projects';
+    singularName: 'zidanfath-project';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::zidanfath-project.zidanfath-project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    date: Attribute.Date;
+    description: Attribute.Text & Attribute.Required;
+    detail: Attribute.Component<'content.blog-detail'> & Attribute.Required;
+    images: Attribute.Media<'images'> & Attribute.Required;
+    link: Attribute.Text & Attribute.DefaultTo<'#'>;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    stacks: Attribute.Relation<
+      'api::zidanfath-project.zidanfath-project',
+      'oneToMany',
+      'api::stack.stack'
+    >;
+    title: Attribute.String & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::zidanfath-project.zidanfath-project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -2322,6 +2472,7 @@ declare module '@strapi/types' {
       'api::team.team': ApiTeamTeam;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::ticket.ticket': ApiTicketTicket;
+      'api::zidanfath-project.zidanfath-project': ApiZidanfathProjectZidanfathProject;
       'plugin::comments.comment': PluginCommentsComment;
       'plugin::comments.comment-report': PluginCommentsCommentReport;
       'plugin::content-releases.release': PluginContentReleasesRelease;
