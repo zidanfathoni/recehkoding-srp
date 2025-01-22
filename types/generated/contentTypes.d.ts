@@ -471,6 +471,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
 export interface ApiEventEvent extends Schema.CollectionType {
   collectionName: 'events';
   info: {
+    description: '';
     displayName: 'Event';
     pluralName: 'events';
     singularName: 'event';
@@ -489,11 +490,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
       Attribute.Private;
     description: Attribute.Text & Attribute.Required;
     endDate: Attribute.DateTime & Attribute.Required;
-    platform: Attribute.Enumeration<
-      ['zoom', 'google meet', 'tiktok', 'youtube', 'instagram']
-    > &
-      Attribute.Required &
-      Attribute.DefaultTo<'google meet'>;
+    platform: Attribute.Component<'micro.platform'> & Attribute.Required;
     publishedAt: Attribute.DateTime;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &

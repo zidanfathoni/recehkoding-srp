@@ -22,7 +22,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-01-22T15:41:07.401Z"
+    "x-generation-date": "2025-01-22T15:43:52.782Z"
   },
   "servers": [
     {
@@ -2653,8 +2653,8 @@
               "startDate",
               "endDate",
               "color",
-              "platform",
-              "thumbnail"
+              "thumbnail",
+              "platform"
             ],
             "type": "object",
             "properties": {
@@ -2675,16 +2675,6 @@
               "color": {
                 "type": "string"
               },
-              "platform": {
-                "type": "string",
-                "enum": [
-                  "zoom",
-                  "google meet",
-                  "tiktok",
-                  "youtube",
-                  "instagram"
-                ]
-              },
               "thumbnail": {
                 "oneOf": [
                   {
@@ -2695,6 +2685,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "platform": {
+                "$ref": "#/components/schemas/MicroPlatformComponent"
               },
               "sitemap_exclude": {
                 "type": "boolean"
@@ -2757,8 +2750,8 @@
           "startDate",
           "endDate",
           "color",
-          "platform",
-          "thumbnail"
+          "thumbnail",
+          "platform"
         ],
         "properties": {
           "title": {
@@ -2777,16 +2770,6 @@
           },
           "color": {
             "type": "string"
-          },
-          "platform": {
-            "type": "string",
-            "enum": [
-              "zoom",
-              "google meet",
-              "tiktok",
-              "youtube",
-              "instagram"
-            ]
           },
           "thumbnail": {
             "type": "object",
@@ -3416,6 +3399,9 @@
               }
             }
           },
+          "platform": {
+            "$ref": "#/components/schemas/MicroPlatformComponent"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -3486,6 +3472,35 @@
           },
           "meta": {
             "type": "object"
+          }
+        }
+      },
+      "MicroPlatformComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "instagram",
+              "tiktok",
+              "youtube",
+              "twitter",
+              "zoom",
+              "google meet"
+            ]
+          },
+          "link": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
           }
         }
       },
