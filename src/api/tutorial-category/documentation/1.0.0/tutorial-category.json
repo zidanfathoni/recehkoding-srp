@@ -1,5 +1,5 @@
 {
-  "/tutorial-bodies": {
+  "/tutorial-categories": {
     "get": {
       "responses": {
         "200": {
@@ -7,7 +7,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TutorialBodyListResponse"
+                "$ref": "#/components/schemas/TutorialCategoryListResponse"
               }
             }
           }
@@ -64,7 +64,7 @@
         }
       },
       "tags": [
-        "Tutorial-body"
+        "Tutorial-category"
       ],
       "parameters": [
         {
@@ -170,7 +170,7 @@
           }
         }
       ],
-      "operationId": "get/tutorial-bodies"
+      "operationId": "get/tutorial-categories"
     },
     "post": {
       "responses": {
@@ -179,7 +179,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TutorialBodyResponse"
+                "$ref": "#/components/schemas/TutorialCategoryResponse"
               }
             }
           }
@@ -236,23 +236,23 @@
         }
       },
       "tags": [
-        "Tutorial-body"
+        "Tutorial-category"
       ],
       "parameters": [],
-      "operationId": "post/tutorial-bodies",
+      "operationId": "post/tutorial-categories",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/TutorialBodyRequest"
+              "$ref": "#/components/schemas/TutorialCategoryRequest"
             }
           }
         }
       }
     }
   },
-  "/tutorial-bodies/{id}": {
+  "/tutorial-categories/{id}": {
     "get": {
       "responses": {
         "200": {
@@ -260,7 +260,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TutorialBodyResponse"
+                "$ref": "#/components/schemas/TutorialCategoryResponse"
               }
             }
           }
@@ -317,7 +317,7 @@
         }
       },
       "tags": [
-        "Tutorial-body"
+        "Tutorial-category"
       ],
       "parameters": [
         {
@@ -331,7 +331,7 @@
           }
         }
       ],
-      "operationId": "get/tutorial-bodies/{id}"
+      "operationId": "get/tutorial-categories/{id}"
     },
     "put": {
       "responses": {
@@ -340,7 +340,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TutorialBodyResponse"
+                "$ref": "#/components/schemas/TutorialCategoryResponse"
               }
             }
           }
@@ -397,7 +397,7 @@
         }
       },
       "tags": [
-        "Tutorial-body"
+        "Tutorial-category"
       ],
       "parameters": [
         {
@@ -411,13 +411,13 @@
           }
         }
       ],
-      "operationId": "put/tutorial-bodies/{id}",
+      "operationId": "put/tutorial-categories/{id}",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/TutorialBodyRequest"
+              "$ref": "#/components/schemas/TutorialCategoryRequest"
             }
           }
         }
@@ -488,7 +488,7 @@
         }
       },
       "tags": [
-        "Tutorial-body"
+        "Tutorial-category"
       ],
       "parameters": [
         {
@@ -502,7 +502,7 @@
           }
         }
       ],
-      "operationId": "delete/tutorial-bodies/{id}"
+      "operationId": "delete/tutorial-categories/{id}"
     }
   }
 }
