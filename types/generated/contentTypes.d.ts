@@ -1399,6 +1399,7 @@ export interface ApiTutorialTutorial extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
+    count: Attribute.Integer & Attribute.Required;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::tutorial.tutorial',
@@ -1407,6 +1408,7 @@ export interface ApiTutorialTutorial extends Schema.CollectionType {
     > &
       Attribute.Private;
     description: Attribute.Text & Attribute.Required;
+    detail: Attribute.Component<'content.tutorial-detail'> & Attribute.Required;
     publishedAt: Attribute.DateTime;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
@@ -1414,6 +1416,11 @@ export interface ApiTutorialTutorial extends Schema.CollectionType {
     slug: Attribute.UID<'api::tutorial.tutorial', 'title'> & Attribute.Required;
     thumbnail: Attribute.Media<'images'> & Attribute.Required;
     title: Attribute.String & Attribute.Required;
+    tutorial_categories: Attribute.Relation<
+      'api::tutorial.tutorial',
+      'oneToMany',
+      'api::tutorial-category.tutorial-category'
+    >;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::tutorial.tutorial',

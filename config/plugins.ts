@@ -1,3 +1,5 @@
+import tutorial from "../src/api/tutorial/controllers/tutorial";
+
 module.exports = ({ env }) => ({
   // ...
   documentation: {
@@ -16,6 +18,10 @@ module.exports = ({ env }) => ({
           field: 'slug',
           references: 'title',
         },
+        tutorial: {
+          field: 'slug',
+          references: 'title',
+        }
       },
     },
   },

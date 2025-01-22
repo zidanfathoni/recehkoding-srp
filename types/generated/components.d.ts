@@ -63,6 +63,30 @@ export interface ContentPortfolioDetail extends Schema.Component {
   };
 }
 
+export interface ContentTutorialDetail extends Schema.Component {
+  collectionName: 'components_content_tutorial_details';
+  info: {
+    displayName: 'tutorial-detail';
+  };
+  attributes: {
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+    creator: Attribute.Relation<
+      'content.tutorial-detail',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    pricing: Attribute.Component<'micro.pricing'> & Attribute.Required;
+    references: Attribute.Component<'micro.link', true> & Attribute.Required;
+  };
+}
+
 export interface MacroLinkIcons extends Schema.Component {
   collectionName: 'components_macro_link_icons';
   info: {
@@ -301,6 +325,7 @@ declare module '@strapi/types' {
       'content.blog-detail': ContentBlogDetail;
       'content.content-base': ContentContentBase;
       'content.portfolio-detail': ContentPortfolioDetail;
+      'content.tutorial-detail': ContentTutorialDetail;
       'macro.link-icons': MacroLinkIcons;
       'micro.cta': MicroCta;
       'micro.features': MicroFeatures;

@@ -32,6 +32,21 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "count": {
+      "type": "integer",
+      "required": true
+    },
+    "tutorial_categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tutorial-category.tutorial-category"
+    },
+    "detail": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.tutorial-detail",
+      "required": true
     }
   }
 }
