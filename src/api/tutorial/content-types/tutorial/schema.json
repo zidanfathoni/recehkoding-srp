@@ -4,7 +4,8 @@
   "info": {
     "singularName": "tutorial",
     "pluralName": "tutorials",
-    "displayName": "tutorial-head"
+    "displayName": "tutorial-head",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -25,12 +26,17 @@
       "required": true
     },
     "thumbnail": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "tutorial_bodies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tutorial-body.tutorial-body"
     }
   }
 }

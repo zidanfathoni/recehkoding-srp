@@ -1275,9 +1275,65 @@ export interface ApiTicketTicket extends Schema.CollectionType {
   };
 }
 
+export interface ApiTutorialBodyTutorialBody extends Schema.CollectionType {
+  collectionName: 'tutorial_bodies';
+  info: {
+    description: '';
+    displayName: 'tutorial-body';
+    pluralName: 'tutorial-bodies';
+    singularName: 'tutorial-body';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+    count: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<1>;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tutorial-body.tutorial-body',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    slug: Attribute.UID<'api::tutorial-body.tutorial-body', 'title'> &
+      Attribute.Required;
+    tags: Attribute.Relation<
+      'api::tutorial-body.tutorial-body',
+      'oneToMany',
+      'api::tag.tag'
+    >;
+    title: Attribute.String & Attribute.Required;
+    tutorial_head: Attribute.Relation<
+      'api::tutorial-body.tutorial-body',
+      'oneToOne',
+      'api::tutorial.tutorial'
+    >;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::tutorial-body.tutorial-body',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTutorialTutorial extends Schema.CollectionType {
   collectionName: 'tutorials';
   info: {
+    description: '';
     displayName: 'tutorial-head';
     pluralName: 'tutorials';
     singularName: 'tutorial';
@@ -1301,6 +1357,11 @@ export interface ApiTutorialTutorial extends Schema.CollectionType {
     slug: Attribute.UID<'api::tutorial.tutorial', 'title'> & Attribute.Required;
     thumbnail: Attribute.Media<'images'> & Attribute.Required;
     title: Attribute.String & Attribute.Required;
+    tutorial_bodies: Attribute.Relation<
+      'api::tutorial.tutorial',
+      'oneToMany',
+      'api::tutorial-body.tutorial-body'
+    >;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::tutorial.tutorial',
@@ -2510,6 +2571,7 @@ declare module '@strapi/types' {
       'api::team.team': ApiTeamTeam;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::ticket.ticket': ApiTicketTicket;
+      'api::tutorial-body.tutorial-body': ApiTutorialBodyTutorialBody;
       'api::tutorial.tutorial': ApiTutorialTutorial;
       'api::zidanfath-project.zidanfath-project': ApiZidanfathProjectZidanfathProject;
       'plugin::comments.comment': PluginCommentsComment;

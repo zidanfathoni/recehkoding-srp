@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tutorial_bodies",
+  "info": {
+    "singularName": "tutorial-body",
+    "pluralName": "tutorial-bodies",
+    "displayName": "tutorial-body",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tutorial_head": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tutorial.tutorial"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "count": {
+      "type": "integer",
+      "required": true,
+      "default": 1
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "default"
+      },
+      "required": true,
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}
