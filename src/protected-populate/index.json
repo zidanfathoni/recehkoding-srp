@@ -183,7 +183,17 @@
                "username",
                "job_title",
                "verified"
-            ]
+            ],
+            "populate": {
+               "avatar": {
+                  "fields": [
+                     "width",
+                     "height",
+                     "name",
+                     "url"
+                  ]
+               }
+            }
          }
       }
    }
