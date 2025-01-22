@@ -106,11 +106,6 @@
       "type": "boolean",
       "default": false,
       "required": true
-    },
-    "pricing": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::pricing.pricing"
     }
   }
 }

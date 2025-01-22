@@ -2527,11 +2527,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
         minLength: 6;
       }>;
     phone: Attribute.String & Attribute.Required;
-    pricing: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::pricing.pricing'
-    >;
     provider: Attribute.String;
     resetPasswordToken: Attribute.String & Attribute.Private;
     role: Attribute.Relation<
