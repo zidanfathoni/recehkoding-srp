@@ -1275,6 +1275,42 @@ export interface ApiTicketTicket extends Schema.CollectionType {
   };
 }
 
+export interface ApiTutorialTutorial extends Schema.CollectionType {
+  collectionName: 'tutorials';
+  info: {
+    displayName: 'tutorial-head';
+    pluralName: 'tutorials';
+    singularName: 'tutorial';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tutorial.tutorial',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    description: Attribute.Text & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    slug: Attribute.UID<'api::tutorial.tutorial', 'title'> & Attribute.Required;
+    thumbnail: Attribute.Media<'images'> & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::tutorial.tutorial',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiZidanfathProjectZidanfathProject
   extends Schema.CollectionType {
   collectionName: 'zidanfath_projects';
@@ -2474,6 +2510,7 @@ declare module '@strapi/types' {
       'api::team.team': ApiTeamTeam;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::ticket.ticket': ApiTicketTicket;
+      'api::tutorial.tutorial': ApiTutorialTutorial;
       'api::zidanfath-project.zidanfath-project': ApiZidanfathProjectZidanfathProject;
       'plugin::comments.comment': PluginCommentsComment;
       'plugin::comments.comment-report': PluginCommentsCommentReport;
