@@ -468,6 +468,49 @@ export interface ApiBlogBlog extends Schema.CollectionType {
   };
 }
 
+export interface ApiEventEvent extends Schema.CollectionType {
+  collectionName: 'events';
+  info: {
+    displayName: 'Event';
+    pluralName: 'events';
+    singularName: 'event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    color: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::event.event',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    description: Attribute.Text & Attribute.Required;
+    endDate: Attribute.DateTime & Attribute.Required;
+    platform: Attribute.Enumeration<
+      ['zoom', 'google meet', 'tiktok', 'youtube', 'instagram']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'google meet'>;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    startDate: Attribute.DateTime & Attribute.Required;
+    thumbnail: Attribute.Media<'images'> & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::event.event',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiExperienceExperience extends Schema.CollectionType {
   collectionName: 'experiences';
   info: {
@@ -989,6 +1032,39 @@ export interface ApiProfileProfile extends Schema.SingleType {
   };
 }
 
+export interface ApiQuickLinkQuickLink extends Schema.SingleType {
+  collectionName: 'quick_links';
+  info: {
+    displayName: 'quick-link';
+    pluralName: 'quick-links';
+    singularName: 'quick-link';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::quick-link.quick-link',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    links: Attribute.Component<'micro.link', true> & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::quick-link.quick-link',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSkillSkill extends Schema.CollectionType {
   collectionName: 'skills';
   info: {
@@ -1334,7 +1410,7 @@ export interface ApiTutorialTutorial extends Schema.CollectionType {
   collectionName: 'tutorials';
   info: {
     description: '';
-    displayName: 'tutorial-head';
+    displayName: 'tutorial';
     pluralName: 'tutorials';
     singularName: 'tutorial';
   };
@@ -2559,6 +2635,7 @@ declare module '@strapi/types' {
       'api::banner.banner': ApiBannerBanner;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
       'api::blog.blog': ApiBlogBlog;
+      'api::event.event': ApiEventEvent;
       'api::experience.experience': ApiExperienceExperience;
       'api::faq.faq': ApiFaqFaq;
       'api::feature.feature': ApiFeatureFeature;
@@ -2569,6 +2646,7 @@ declare module '@strapi/types' {
       'api::profile-stack.profile-stack': ApiProfileStackProfileStack;
       'api::profile-team.profile-team': ApiProfileTeamProfileTeam;
       'api::profile.profile': ApiProfileProfile;
+      'api::quick-link.quick-link': ApiQuickLinkQuickLink;
       'api::skill.skill': ApiSkillSkill;
       'api::stack.stack': ApiStackStack;
       'api::subscribe.subscribe': ApiSubscribeSubscribe;

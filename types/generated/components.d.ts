@@ -138,6 +138,24 @@ export interface MicroLink extends Schema.Component {
   };
 }
 
+export interface MicroPlatform extends Schema.Component {
+  collectionName: 'components_micro_platforms';
+  info: {
+    displayName: 'platform';
+  };
+  attributes: {
+    link: Attribute.Text & Attribute.Required;
+    platform: Attribute.Enumeration<
+      ['instagram', 'tiktok', 'youtube', 'twitter', 'zoom', 'google meet']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'tiktok'>;
+    status: Attribute.Enumeration<['active', 'inactive']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'active'>;
+  };
+}
+
 export interface MicroPoint extends Schema.Component {
   collectionName: 'components_micro_points';
   info: {
@@ -146,6 +164,19 @@ export interface MicroPoint extends Schema.Component {
   attributes: {
     description: Attribute.Text & Attribute.Required;
     title: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface MicroPricing extends Schema.Component {
+  collectionName: 'components_micro_pricings';
+  info: {
+    displayName: 'pricing';
+  };
+  attributes: {
+    price: Attribute.Integer & Attribute.Required;
+    status: Attribute.Enumeration<['free', 'premium']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'free'>;
   };
 }
 
@@ -275,7 +306,9 @@ declare module '@strapi/types' {
       'micro.features': MicroFeatures;
       'micro.header': MicroHeader;
       'micro.link': MicroLink;
+      'micro.platform': MicroPlatform;
       'micro.point': MicroPoint;
+      'micro.pricing': MicroPricing;
       'micro.short-text': MicroShortText;
       'micro.stack': MicroStack;
       'micro.team-task': MicroTeamTask;
