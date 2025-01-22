@@ -22,7 +22,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-01-22T05:39:04.838Z"
+    "x-generation-date": "2025-01-22T05:45:21.951Z"
   },
   "servers": [
     {
@@ -18844,6 +18844,18 @@
                     "attributes": {
                       "type": "object",
                       "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "slug": {
+                          "type": "string"
+                        },
+                        "count": {
+                          "type": "integer"
+                        },
+                        "content": {
+                          "type": "string"
+                        },
                         "tutorial_head": {
                           "type": "object",
                           "properties": {
@@ -19158,18 +19170,6 @@
                             }
                           }
                         },
-                        "title": {
-                          "type": "string"
-                        },
-                        "slug": {
-                          "type": "string"
-                        },
-                        "count": {
-                          "type": "integer"
-                        },
-                        "content": {
-                          "type": "string"
-                        },
                         "createdAt": {
                           "type": "string",
                           "format": "date-time"
@@ -19314,6 +19314,18 @@
             ],
             "type": "object",
             "properties": {
+              "title": {
+                "type": "string"
+              },
+              "slug": {
+                "type": "string"
+              },
+              "count": {
+                "type": "integer"
+              },
+              "content": {
+                "type": "string"
+              },
               "tutorial_head": {
                 "oneOf": [
                   {
@@ -19338,18 +19350,6 @@
                   ],
                   "example": "string or id"
                 }
-              },
-              "title": {
-                "type": "string"
-              },
-              "slug": {
-                "type": "string"
-              },
-              "count": {
-                "type": "integer"
-              },
-              "content": {
-                "type": "string"
               },
               "sitemap_exclude": {
                 "type": "boolean"
@@ -19413,6 +19413,18 @@
           "content"
         ],
         "properties": {
+          "title": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "content": {
+            "type": "string"
+          },
           "tutorial_head": {
             "type": "object",
             "properties": {
@@ -20076,6 +20088,18 @@
                                 "attributes": {
                                   "type": "object",
                                   "properties": {
+                                    "title": {
+                                      "type": "string"
+                                    },
+                                    "slug": {
+                                      "type": "string"
+                                    },
+                                    "count": {
+                                      "type": "integer"
+                                    },
+                                    "content": {
+                                      "type": "string"
+                                    },
                                     "tutorial_head": {
                                       "type": "object",
                                       "properties": {
@@ -20168,18 +20192,6 @@
                                           }
                                         }
                                       }
-                                    },
-                                    "title": {
-                                      "type": "string"
-                                    },
-                                    "slug": {
-                                      "type": "string"
-                                    },
-                                    "count": {
-                                      "type": "integer"
-                                    },
-                                    "content": {
-                                      "type": "string"
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -20311,18 +20323,6 @@
                 }
               }
             }
-          },
-          "title": {
-            "type": "string"
-          },
-          "slug": {
-            "type": "string"
-          },
-          "count": {
-            "type": "integer"
-          },
-          "content": {
-            "type": "string"
           },
           "createdAt": {
             "type": "string",

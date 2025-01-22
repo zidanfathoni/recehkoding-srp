@@ -12,16 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "tutorial_head": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::tutorial.tutorial"
-    },
-    "tags": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag.tag"
-    },
     "title": {
       "type": "string",
       "required": true
@@ -43,6 +33,16 @@
       },
       "required": true,
       "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "tutorial_head": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tutorial.tutorial"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
     }
   }
 }
