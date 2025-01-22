@@ -170,5 +170,21 @@
             ]
          }
       }
+   },
+   "GET /api/profile-team": {
+      "content-type": "api::profile-team.profile-team",
+      "fields": [
+         "title",
+         "description"
+      ],
+      "populate": {
+         "users_permissions_users": {
+            "fields": [
+               "username",
+               "job_title",
+               "verified"
+            ]
+         }
+      }
    }
 }

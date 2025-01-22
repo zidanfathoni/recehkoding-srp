@@ -803,41 +803,6 @@ export interface ApiPricingPricing extends Schema.CollectionType {
   };
 }
 
-export interface ApiProfileStackProfileStack extends Schema.SingleType {
-  collectionName: 'profile_stacks';
-  info: {
-    displayName: 'profile-stack';
-    pluralName: 'profile-stacks';
-    singularName: 'profile-stack';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::profile-stack.profile-stack',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    description: Attribute.Text & Attribute.Required;
-    publishedAt: Attribute.DateTime;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
-    stack: Attribute.Component<'micro.stack', true>;
-    title: Attribute.String & Attribute.Required;
-    updatedAt: Attribute.DateTime;
-    updatedBy: Attribute.Relation<
-      'api::profile-stack.profile-stack',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiProfileTeamProfileTeam extends Schema.SingleType {
   collectionName: 'profile_teams';
   info: {
@@ -2621,7 +2586,6 @@ declare module '@strapi/types' {
       'api::me.me': ApiMeMe;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
       'api::pricing.pricing': ApiPricingPricing;
-      'api::profile-stack.profile-stack': ApiProfileStackProfileStack;
       'api::profile-team.profile-team': ApiProfileTeamProfileTeam;
       'api::profile.profile': ApiProfileProfile;
       'api::quick-link.quick-link': ApiQuickLinkQuickLink;
