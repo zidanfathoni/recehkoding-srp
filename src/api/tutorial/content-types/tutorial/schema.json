@@ -37,6 +37,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::tutorial-body.tutorial-body"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }

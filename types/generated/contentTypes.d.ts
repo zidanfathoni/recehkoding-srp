@@ -1369,6 +1369,11 @@ export interface ApiTutorialTutorial extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    users_permissions_user: Attribute.Relation<
+      'api::tutorial.tutorial',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 
