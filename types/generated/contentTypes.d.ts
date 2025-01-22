@@ -1189,6 +1189,7 @@ export interface ApiTeamTeam extends Schema.CollectionType {
 export interface ApiTestimonialTestimonial extends Schema.CollectionType {
   collectionName: 'testimonials';
   info: {
+    description: '';
     displayName: 'testimonial';
     pluralName: 'testimonials';
     singularName: 'testimonial';
@@ -1205,10 +1206,9 @@ export interface ApiTestimonialTestimonial extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    email: Attribute.Email & Attribute.Required;
     job: Attribute.String & Attribute.Required;
+    link: Attribute.Component<'micro.link'>;
     message: Attribute.Text & Attribute.Required;
-    photo: Attribute.Media<'images'>;
     publishedAt: Attribute.DateTime;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
@@ -1279,6 +1279,7 @@ export interface ApiZidanfathProjectZidanfathProject
   extends Schema.CollectionType {
   collectionName: 'zidanfath_projects';
   info: {
+    description: '';
     displayName: 'zidanfath-project';
     pluralName: 'zidanfath-projects';
     singularName: 'zidanfath-project';
@@ -1303,6 +1304,7 @@ export interface ApiZidanfathProjectZidanfathProject
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
+    slug: Attribute.UID<'api::zidanfath-project.zidanfath-project', 'title'>;
     stacks: Attribute.Relation<
       'api::zidanfath-project.zidanfath-project',
       'oneToMany',

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "zidanfath-project",
     "pluralName": "zidanfath-projects",
-    "displayName": "zidanfath-project"
+    "displayName": "zidanfath-project",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -38,12 +39,16 @@
       "type": "date"
     },
     "images": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
     }
   }
 }
