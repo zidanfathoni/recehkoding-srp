@@ -90,10 +90,10 @@ export interface ContentTutorialDetail extends Schema.Component {
 export interface MacroLinkIcons extends Schema.Component {
   collectionName: 'components_macro_link_icons';
   info: {
+    description: '';
     displayName: 'LinkIcons';
   };
   attributes: {
-    icons_mobile: Attribute.String & Attribute.Required;
     icons_web: Attribute.String &
       Attribute.Required &
       Attribute.CustomField<'plugin::react-icons.icon'>;

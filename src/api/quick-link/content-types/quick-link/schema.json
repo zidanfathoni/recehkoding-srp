@@ -4,7 +4,8 @@
   "info": {
     "singularName": "quick-link",
     "pluralName": "quick-links",
-    "displayName": "quick-link"
+    "displayName": "quick-link",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,6 +17,11 @@
       "repeatable": true,
       "component": "micro.link",
       "required": true
+    },
+    "social": {
+      "type": "component",
+      "repeatable": true,
+      "component": "macro.link-icons"
     }
   }
 }

@@ -636,44 +636,6 @@ export interface ApiFeatureFeature extends Schema.CollectionType {
   };
 }
 
-export interface ApiHomePageHomePage extends Schema.SingleType {
-  collectionName: 'home_pages';
-  info: {
-    displayName: 'home-page';
-    pluralName: 'home-pages';
-    singularName: 'home-page';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::home-page.home-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    links: Attribute.Component<'macro.link-icons', true>;
-    publishedAt: Attribute.DateTime;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
-    stacks: Attribute.Relation<
-      'api::home-page.home-page',
-      'oneToMany',
-      'api::stack.stack'
-    >;
-    updatedAt: Attribute.DateTime;
-    updatedBy: Attribute.Relation<
-      'api::home-page.home-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiMeMe extends Schema.SingleType {
   collectionName: 'us';
   info: {
@@ -797,6 +759,46 @@ export interface ApiPricingPricing extends Schema.CollectionType {
       Attribute.Private;
     uuid: Attribute.UID &
       Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
+  };
+}
+
+export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.SingleType {
+  collectionName: 'privacy_policies';
+  info: {
+    displayName: 'privacy-policy';
+    pluralName: 'privacy-policies';
+    singularName: 'privacy-policy';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::privacy-policy.privacy-policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::privacy-policy.privacy-policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -997,6 +999,7 @@ export interface ApiProfileProfile extends Schema.SingleType {
 export interface ApiQuickLinkQuickLink extends Schema.SingleType {
   collectionName: 'quick_links';
   info: {
+    description: '';
     displayName: 'quick-link';
     pluralName: 'quick-links';
     singularName: 'quick-link';
@@ -1017,6 +1020,7 @@ export interface ApiQuickLinkQuickLink extends Schema.SingleType {
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
+    social: Attribute.Component<'macro.link-icons', true>;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::quick-link.quick-link',
@@ -1114,6 +1118,7 @@ export interface ApiStackStack extends Schema.CollectionType {
 export interface ApiSubscribeSubscribe extends Schema.CollectionType {
   collectionName: 'subscribes';
   info: {
+    description: '';
     displayName: 'subscribe';
     pluralName: 'subscribes';
     singularName: 'subscribe';
@@ -1133,7 +1138,7 @@ export interface ApiSubscribeSubscribe extends Schema.CollectionType {
     is_active: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<true>;
-    name: Attribute.String & Attribute.Required;
+    name: Attribute.String & Attribute.DefaultTo<'users'>;
     publishedAt: Attribute.DateTime;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
@@ -1221,6 +1226,46 @@ export interface ApiTeamTeam extends Schema.CollectionType {
       'oneToMany',
       'plugin::users-permissions.user'
     >;
+  };
+}
+
+export interface ApiTermAndConditionTermAndCondition extends Schema.SingleType {
+  collectionName: 'term_and_conditions';
+  info: {
+    displayName: 'term-and-condition';
+    pluralName: 'term-and-conditions';
+    singularName: 'term-and-condition';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::term-and-condition.term-and-condition',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::term-and-condition.term-and-condition',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -2574,10 +2619,10 @@ declare module '@strapi/types' {
       'api::experience.experience': ApiExperienceExperience;
       'api::faq.faq': ApiFaqFaq;
       'api::feature.feature': ApiFeatureFeature;
-      'api::home-page.home-page': ApiHomePageHomePage;
       'api::me.me': ApiMeMe;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
       'api::pricing.pricing': ApiPricingPricing;
+      'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::profile-team.profile-team': ApiProfileTeamProfileTeam;
       'api::profile.profile': ApiProfileProfile;
       'api::quick-link.quick-link': ApiQuickLinkQuickLink;
@@ -2586,6 +2631,7 @@ declare module '@strapi/types' {
       'api::subscribe.subscribe': ApiSubscribeSubscribe;
       'api::tag.tag': ApiTagTag;
       'api::team.team': ApiTeamTeam;
+      'api::term-and-condition.term-and-condition': ApiTermAndConditionTermAndCondition;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::ticket.ticket': ApiTicketTicket;
       'api::tutorial-category.tutorial-category': ApiTutorialCategoryTutorialCategory;

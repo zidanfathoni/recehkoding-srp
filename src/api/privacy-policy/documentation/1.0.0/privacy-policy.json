@@ -1,5 +1,5 @@
 {
-  "/home-page": {
+  "/privacy-policy": {
     "get": {
       "responses": {
         "200": {
@@ -7,7 +7,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/HomePageResponse"
+                "$ref": "#/components/schemas/PrivacyPolicyResponse"
               }
             }
           }
@@ -64,7 +64,7 @@
         }
       },
       "tags": [
-        "Home-page"
+        "Privacy-policy"
       ],
       "parameters": [
         {
@@ -170,7 +170,7 @@
           }
         }
       ],
-      "operationId": "get/home-page"
+      "operationId": "get/privacy-policy"
     },
     "put": {
       "responses": {
@@ -179,7 +179,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/HomePageResponse"
+                "$ref": "#/components/schemas/PrivacyPolicyResponse"
               }
             }
           }
@@ -236,16 +236,16 @@
         }
       },
       "tags": [
-        "Home-page"
+        "Privacy-policy"
       ],
       "parameters": [],
-      "operationId": "put/home-page",
+      "operationId": "put/privacy-policy",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/HomePageRequest"
+              "$ref": "#/components/schemas/PrivacyPolicyRequest"
             }
           }
         }
@@ -316,10 +316,10 @@
         }
       },
       "tags": [
-        "Home-page"
+        "Privacy-policy"
       ],
       "parameters": [],
-      "operationId": "delete/home-page"
+      "operationId": "delete/privacy-policy"
     }
   }
 }
