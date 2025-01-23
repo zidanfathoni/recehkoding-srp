@@ -492,13 +492,16 @@ export interface ApiEventEvent extends Schema.CollectionType {
     endDate: Attribute.DateTime & Attribute.Required;
     platform: Attribute.Component<'micro.platform'> & Attribute.Required;
     publishedAt: Attribute.DateTime;
-    seo: Attribute.Component<'shared.seo'> & Attribute.Required;
+    seo: Attribute.Component<'shared.seo'>;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
     startDate: Attribute.DateTime & Attribute.Required;
     thumbnail: Attribute.Media<'images'> & Attribute.Required;
     title: Attribute.String & Attribute.Required;
+    type: Attribute.Enumeration<['Webinar', 'Class', 'Meet Up', 'Chill']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Webinar'>;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::event.event',

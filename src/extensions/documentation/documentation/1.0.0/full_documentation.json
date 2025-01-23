@@ -22,7 +22,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-01-23T12:58:30.944Z"
+    "x-generation-date": "2025-01-23T15:51:19.775Z"
   },
   "servers": [
     {
@@ -2655,7 +2655,7 @@
               "color",
               "thumbnail",
               "platform",
-              "seo"
+              "type"
             ],
             "type": "object",
             "properties": {
@@ -2692,6 +2692,15 @@
               },
               "seo": {
                 "$ref": "#/components/schemas/SharedSeoComponent"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "Webinar",
+                  "Class",
+                  "Meet Up",
+                  "Chill"
+                ]
               },
               "sitemap_exclude": {
                 "type": "boolean"
@@ -2756,7 +2765,7 @@
           "color",
           "thumbnail",
           "platform",
-          "seo"
+          "type"
         ],
         "properties": {
           "title": {
@@ -3409,6 +3418,15 @@
           },
           "seo": {
             "$ref": "#/components/schemas/SharedSeoComponent"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "Webinar",
+              "Class",
+              "Meet Up",
+              "Chill"
+            ]
           },
           "createdAt": {
             "type": "string",

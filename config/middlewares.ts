@@ -5,12 +5,11 @@ export default [
     name: 'strapi::cors',
     config: {
       origin: [
-        '*',
-        // 'http://localhost:3000',
-        // 'https://zidanfath.com', 'recehkoding.com'
+        'http://localhost:3000', 'http://localhost:3001',
+        'https://zidanfath.com', 'https://recehkoding.com'
       ],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
-      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
+      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept', 'Access-Control-Allow-Origin'],
       keepHeaderOnError: true,
     },
   },

@@ -54,9 +54,9 @@ module.exports = ({ env }) => ({
     config: {
       provider: 'nodemailer',
       providerOptions: {
-        host: 'gmail.googleapis.com', // Ganti dengan host SMTP Anda
-        port: 587,               // Gunakan port SMTP (587 untuk TLS)
-        secure: false,           // Gunakan true untuk port 465, selain itu false
+        host: 'gmail.googleapis.com',  // Ganti dengan host SMTP Anda
+        port: 587,                     // Gunakan port SMTP (587 untuk TLS)
+        secure: false,                 // Gunakan true untuk port 465, selain itu false
         auth: {
           user: 'recehkoding@gmail.com', // Email SMTP Anda
           clientId: env('CLIENT_ID', 'client-id'),
