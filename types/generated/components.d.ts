@@ -272,6 +272,7 @@ export interface MicroTicketAnswer extends Schema.Component {
 export interface SharedMetaSocial extends Schema.Component {
   collectionName: 'components_shared_meta_socials';
   info: {
+    description: '';
     displayName: 'metaSocial';
     icon: 'project-diagram';
   };
@@ -282,7 +283,9 @@ export interface SharedMetaSocial extends Schema.Component {
         maxLength: 65;
       }>;
     image: Attribute.Media<'images' | 'files' | 'videos'>;
-    socialNetwork: Attribute.Enumeration<['Facebook', 'Twitter']> &
+    socialNetwork: Attribute.Enumeration<
+      ['Facebook', 'Twitter', 'Instagram', 'Tiktok']
+    > &
       Attribute.Required;
     title: Attribute.String &
       Attribute.Required &

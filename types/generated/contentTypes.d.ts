@@ -512,60 +512,6 @@ export interface ApiEventEvent extends Schema.CollectionType {
   };
 }
 
-export interface ApiExperienceExperience extends Schema.CollectionType {
-  collectionName: 'experiences';
-  info: {
-    description: '';
-    displayName: 'experience';
-    pluralName: 'experiences';
-    singularName: 'experience';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    company: Attribute.String & Attribute.Required;
-    content: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'default';
-        }
-      >;
-    createdAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::experience.experience',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    end_date: Attribute.Date & Attribute.Required;
-    is_detail: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    is_present: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<true>;
-    position: Attribute.String & Attribute.Required;
-    publishedAt: Attribute.DateTime;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
-    slug: Attribute.UID<'api::experience.experience', 'title'> &
-      Attribute.Required;
-    start_date: Attribute.Date & Attribute.Required;
-    thumbnail: Attribute.Media<'images'> & Attribute.Required;
-    title: Attribute.String & Attribute.Required;
-    updatedAt: Attribute.DateTime;
-    updatedBy: Attribute.Relation<
-      'api::experience.experience',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiFaqFaq extends Schema.CollectionType {
   collectionName: 'faqs';
   info: {
@@ -697,7 +643,7 @@ export interface ApiPortfolioPortfolio extends Schema.CollectionType {
     detail: Attribute.Component<'content.portfolio-detail'> &
       Attribute.Required;
     publishedAt: Attribute.DateTime;
-    seo: Attribute.Component<'shared.seo'> & Attribute.Required;
+    seo: Attribute.Component<'shared.seo'>;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
@@ -1102,7 +1048,7 @@ export interface ApiStuckStuck extends Schema.CollectionType {
     description: Attribute.Text & Attribute.Required;
     images: Attribute.Media<'images'> & Attribute.Required;
     publishedAt: Attribute.DateTime;
-    seo: Attribute.Component<'shared.seo'> & Attribute.Required;
+    seo: Attribute.Component<'shared.seo'>;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
@@ -2623,7 +2569,6 @@ declare module '@strapi/types' {
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
       'api::blog.blog': ApiBlogBlog;
       'api::event.event': ApiEventEvent;
-      'api::experience.experience': ApiExperienceExperience;
       'api::faq.faq': ApiFaqFaq;
       'api::feature.feature': ApiFeatureFeature;
       'api::me.me': ApiMeMe;
