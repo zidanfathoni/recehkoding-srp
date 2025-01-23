@@ -492,6 +492,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
     endDate: Attribute.DateTime & Attribute.Required;
     platform: Attribute.Component<'micro.platform'> & Attribute.Required;
     publishedAt: Attribute.DateTime;
+    seo: Attribute.Component<'shared.seo'> & Attribute.Required;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
@@ -1075,6 +1076,45 @@ export interface ApiStackStack extends Schema.CollectionType {
   };
 }
 
+export interface ApiStuckStuck extends Schema.CollectionType {
+  collectionName: 'stucks';
+  info: {
+    description: '';
+    displayName: 'stuck';
+    pluralName: 'stucks';
+    singularName: 'stuck';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.Component<'content.content-base'>;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::stuck.stuck',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    description: Attribute.Text & Attribute.Required;
+    images: Attribute.Media<'images'> & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    seo: Attribute.Component<'shared.seo'> & Attribute.Required;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    tag: Attribute.Relation<'api::stuck.stuck', 'oneToOne', 'api::tag.tag'>;
+    title: Attribute.String & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::stuck.stuck',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSubscribeSubscribe extends Schema.CollectionType {
   collectionName: 'subscribes';
   info: {
@@ -1278,6 +1318,48 @@ export interface ApiTicketTicket extends Schema.CollectionType {
   };
 }
 
+export interface ApiToolTool extends Schema.CollectionType {
+  collectionName: 'tools';
+  info: {
+    displayName: 'tool';
+    pluralName: 'tools';
+    singularName: 'tool';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::tool.tool', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    description: Attribute.Text & Attribute.Required;
+    link: Attribute.Component<'macro.link-icons'>;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    slug: Attribute.UID<'api::tool.tool', 'title'> & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    type: Attribute.Enumeration<
+      [
+        'Environmental',
+        'Management',
+        'Service',
+        'Technology',
+        'Mobile Apps',
+        'Front-end',
+        'Back-end',
+        'AI'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Environmental'>;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<'api::tool.tool', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTutorialCategoryTutorialCategory
   extends Schema.CollectionType {
   collectionName: 'tutorial_categories';
@@ -1337,6 +1419,7 @@ export interface ApiTutorialTutorial extends Schema.CollectionType {
     description: Attribute.Text & Attribute.Required;
     detail: Attribute.Component<'content.tutorial-detail'> & Attribute.Required;
     publishedAt: Attribute.DateTime;
+    seo: Attribute.Component<'shared.seo'> & Attribute.Required;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
@@ -1384,6 +1467,7 @@ export interface ApiZidanfathProjectZidanfathProject
     images: Attribute.Media<'images'> & Attribute.Required;
     link: Attribute.Text & Attribute.DefaultTo<'#'>;
     publishedAt: Attribute.DateTime;
+    seo: Attribute.Component<'shared.seo'> & Attribute.Required;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
@@ -2547,11 +2631,13 @@ declare module '@strapi/types' {
       'api::quick-link.quick-link': ApiQuickLinkQuickLink;
       'api::skill.skill': ApiSkillSkill;
       'api::stack.stack': ApiStackStack;
+      'api::stuck.stuck': ApiStuckStuck;
       'api::subscribe.subscribe': ApiSubscribeSubscribe;
       'api::tag.tag': ApiTagTag;
       'api::team.team': ApiTeamTeam;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::ticket.ticket': ApiTicketTicket;
+      'api::tool.tool': ApiToolTool;
       'api::tutorial-category.tutorial-category': ApiTutorialCategoryTutorialCategory;
       'api::tutorial.tutorial': ApiTutorialTutorial;
       'api::zidanfath-project.zidanfath-project': ApiZidanfathProjectZidanfathProject;

@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "tutorials",
+  "collectionName": "stucks",
   "info": {
-    "singularName": "tutorial",
-    "pluralName": "tutorials",
-    "displayName": "tutorial",
+    "singularName": "stuck",
+    "pluralName": "stucks",
+    "displayName": "stuck",
     "description": ""
   },
   "options": {
@@ -16,16 +16,11 @@
       "type": "string",
       "required": true
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "title",
-      "required": true
-    },
     "description": {
       "type": "text",
       "required": true
     },
-    "thumbnail": {
+    "images": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -33,21 +28,15 @@
         "images"
       ]
     },
-    "count": {
-      "type": "integer",
-      "required": true,
-      "default": 1
-    },
-    "tutorial_categories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tutorial-category.tutorial-category"
-    },
-    "detail": {
+    "content": {
       "type": "component",
       "repeatable": false,
-      "component": "content.tutorial-detail",
-      "required": true
+      "component": "content.content-base"
+    },
+    "tag": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tag.tag"
     },
     "seo": {
       "type": "component",
