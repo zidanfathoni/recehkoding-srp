@@ -762,46 +762,6 @@ export interface ApiPricingPricing extends Schema.CollectionType {
   };
 }
 
-export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.SingleType {
-  collectionName: 'privacy_policies';
-  info: {
-    displayName: 'privacy-policy';
-    pluralName: 'privacy-policies';
-    singularName: 'privacy-policy';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    content: Attribute.RichText &
-      Attribute.Required &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'default';
-        }
-      >;
-    createdAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::privacy-policy.privacy-policy',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    publishedAt: Attribute.DateTime;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
-    updatedAt: Attribute.DateTime;
-    updatedBy: Attribute.Relation<
-      'api::privacy-policy.privacy-policy',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiProfileTeamProfileTeam extends Schema.SingleType {
   collectionName: 'profile_teams';
   info: {
@@ -1226,46 +1186,6 @@ export interface ApiTeamTeam extends Schema.CollectionType {
       'oneToMany',
       'plugin::users-permissions.user'
     >;
-  };
-}
-
-export interface ApiTermAndConditionTermAndCondition extends Schema.SingleType {
-  collectionName: 'term_and_conditions';
-  info: {
-    displayName: 'term-and-condition';
-    pluralName: 'term-and-conditions';
-    singularName: 'term-and-condition';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    content: Attribute.RichText &
-      Attribute.Required &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'default';
-        }
-      >;
-    createdAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::term-and-condition.term-and-condition',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    publishedAt: Attribute.DateTime;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
-    updatedAt: Attribute.DateTime;
-    updatedBy: Attribute.Relation<
-      'api::term-and-condition.term-and-condition',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
   };
 }
 
@@ -2622,7 +2542,6 @@ declare module '@strapi/types' {
       'api::me.me': ApiMeMe;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
       'api::pricing.pricing': ApiPricingPricing;
-      'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::profile-team.profile-team': ApiProfileTeamProfileTeam;
       'api::profile.profile': ApiProfileProfile;
       'api::quick-link.quick-link': ApiQuickLinkQuickLink;
@@ -2631,7 +2550,6 @@ declare module '@strapi/types' {
       'api::subscribe.subscribe': ApiSubscribeSubscribe;
       'api::tag.tag': ApiTagTag;
       'api::team.team': ApiTeamTeam;
-      'api::term-and-condition.term-and-condition': ApiTermAndConditionTermAndCondition;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::ticket.ticket': ApiTicketTicket;
       'api::tutorial-category.tutorial-category': ApiTutorialCategoryTutorialCategory;
