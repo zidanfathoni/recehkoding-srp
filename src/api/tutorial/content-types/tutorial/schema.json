@@ -35,7 +35,8 @@
     },
     "count": {
       "type": "integer",
-      "required": true
+      "required": true,
+      "default": 1
     },
     "tutorial_categories": {
       "type": "relation",

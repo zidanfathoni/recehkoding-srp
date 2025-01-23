@@ -194,10 +194,11 @@ export interface MicroPoint extends Schema.Component {
 export interface MicroPricing extends Schema.Component {
   collectionName: 'components_micro_pricings';
   info: {
+    description: '';
     displayName: 'pricing';
   };
   attributes: {
-    price: Attribute.Integer & Attribute.Required;
+    price: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<0>;
     status: Attribute.Enumeration<['free', 'premium']> &
       Attribute.Required &
       Attribute.DefaultTo<'free'>;

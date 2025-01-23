@@ -1326,7 +1326,7 @@ export interface ApiTutorialTutorial extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    count: Attribute.Integer & Attribute.Required;
+    count: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<1>;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::tutorial.tutorial',
