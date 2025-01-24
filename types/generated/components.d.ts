@@ -269,6 +269,31 @@ export interface MicroTicketAnswer extends Schema.Component {
   };
 }
 
+export interface PagePageItem extends Schema.Component {
+  collectionName: 'components_page_page_items';
+  info: {
+    displayName: 'page-item';
+  };
+  attributes: {
+    icon: Attribute.String &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::react-icons.icon'>;
+    name: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface PagePageSubItem extends Schema.Component {
+  collectionName: 'components_page_page_sub_items';
+  info: {
+    description: '';
+    displayName: 'page-sub-item';
+  };
+  attributes: {
+    item: Attribute.Component<'micro.link'>;
+    items: Attribute.Component<'micro.link', true>;
+  };
+}
+
 export interface SharedMetaSocial extends Schema.Component {
   collectionName: 'components_shared_meta_socials';
   info: {
@@ -342,6 +367,8 @@ declare module '@strapi/types' {
       'micro.stack': MicroStack;
       'micro.team-task': MicroTeamTask;
       'micro.ticket-answer': MicroTicketAnswer;
+      'page.page-item': PagePageItem;
+      'page.page-sub-item': PagePageSubItem;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }

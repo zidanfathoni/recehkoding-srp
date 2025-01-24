@@ -620,6 +620,36 @@ export interface ApiMeMe extends Schema.SingleType {
   };
 }
 
+export interface ApiPagePage extends Schema.CollectionType {
+  collectionName: 'pages';
+  info: {
+    description: '';
+    displayName: 'page';
+    pluralName: 'pages';
+    singularName: 'page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    icon: Attribute.String &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::react-icons.icon'>;
+    name: Attribute.String & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    slug: Attribute.UID<'api::page.page', 'name'> & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPortfolioPortfolio extends Schema.CollectionType {
   collectionName: 'portfolios';
   info: {
@@ -1991,6 +2021,229 @@ export interface PluginMenusMenuItem extends Schema.CollectionType {
   };
 }
 
+export interface PluginNavigationAudience extends Schema.CollectionType {
+  collectionName: 'audience';
+  info: {
+    displayName: 'Audience';
+    name: 'audience';
+    pluralName: 'audiences';
+    singularName: 'audience';
+  };
+  options: {
+    comment: 'Audience';
+    increments: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::navigation.audience',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    key: Attribute.UID<'plugin::navigation.audience', 'name'>;
+    name: Attribute.String & Attribute.Required;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'plugin::navigation.audience',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginNavigationNavigation extends Schema.CollectionType {
+  collectionName: 'navigations';
+  info: {
+    displayName: 'Navigation';
+    name: 'navigation';
+    pluralName: 'navigations';
+    singularName: 'navigation';
+  };
+  options: {
+    comment: '';
+    increments: true;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::navigation.navigation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    items: Attribute.Relation<
+      'plugin::navigation.navigation',
+      'oneToMany',
+      'plugin::navigation.navigation-item'
+    >;
+    localeCode: Attribute.String;
+    localizations: Attribute.Relation<
+      'plugin::navigation.navigation',
+      'oneToMany',
+      'plugin::navigation.navigation'
+    >;
+    name: Attribute.Text & Attribute.Required;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    slug: Attribute.UID & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'plugin::navigation.navigation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    visible: Attribute.Boolean & Attribute.DefaultTo<false>;
+  };
+}
+
+export interface PluginNavigationNavigationItem extends Schema.CollectionType {
+  collectionName: 'navigations_items';
+  info: {
+    displayName: 'Navigation Item';
+    name: 'navigation-item';
+    pluralName: 'navigation-items';
+    singularName: 'navigation-item';
+  };
+  options: {
+    comment: 'Navigation Item';
+    increments: true;
+    timestamps: true;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+    i18n: {
+      localized: false;
+    };
+  };
+  attributes: {
+    additionalFields: Attribute.JSON & Attribute.DefaultTo<{}>;
+    audience: Attribute.Relation<
+      'plugin::navigation.navigation-item',
+      'oneToMany',
+      'plugin::navigation.audience'
+    >;
+    autoSync: Attribute.Boolean & Attribute.DefaultTo<true>;
+    collapsed: Attribute.Boolean & Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::navigation.navigation-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    externalPath: Attribute.Text;
+    master: Attribute.Relation<
+      'plugin::navigation.navigation-item',
+      'manyToOne',
+      'plugin::navigation.navigation'
+    >;
+    menuAttached: Attribute.Boolean & Attribute.DefaultTo<false>;
+    order: Attribute.Integer & Attribute.DefaultTo<0>;
+    parent: Attribute.Relation<
+      'plugin::navigation.navigation-item',
+      'oneToOne',
+      'plugin::navigation.navigation-item'
+    >;
+    path: Attribute.Text;
+    related: Attribute.Relation<
+      'plugin::navigation.navigation-item',
+      'oneToOne',
+      'plugin::navigation.navigations-items-related'
+    >;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    title: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    type: Attribute.Enumeration<['INTERNAL', 'EXTERNAL', 'WRAPPER']> &
+      Attribute.DefaultTo<'INTERNAL'>;
+    uiRouterKey: Attribute.String;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'plugin::navigation.navigation-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginNavigationNavigationsItemsRelated
+  extends Schema.CollectionType {
+  collectionName: 'navigations_items_related';
+  info: {
+    displayName: 'Navigations Items Related';
+    name: 'navigations_items_related';
+    pluralName: 'navigations-items-relateds';
+    singularName: 'navigations-items-related';
+  };
+  options: {
+    increments: true;
+    populateCreatorFields: false;
+    timestamps: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+    i18n: {
+      localized: false;
+    };
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::navigation.navigations-items-related',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    field: Attribute.String & Attribute.Required;
+    master: Attribute.String & Attribute.Required;
+    order: Attribute.Integer & Attribute.Required;
+    related_id: Attribute.String & Attribute.Required;
+    related_type: Attribute.String & Attribute.Required;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'plugin::navigation.navigations-items-related',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginPublisherAction extends Schema.CollectionType {
   collectionName: 'actions';
   info: {
@@ -2572,6 +2825,7 @@ declare module '@strapi/types' {
       'api::faq.faq': ApiFaqFaq;
       'api::feature.feature': ApiFeatureFeature;
       'api::me.me': ApiMeMe;
+      'api::page.page': ApiPagePage;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
       'api::pricing.pricing': ApiPricingPricing;
       'api::profile-team.profile-team': ApiProfileTeamProfileTeam;
@@ -2599,6 +2853,10 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::menus.menu': PluginMenusMenu;
       'plugin::menus.menu-item': PluginMenusMenuItem;
+      'plugin::navigation.audience': PluginNavigationAudience;
+      'plugin::navigation.navigation': PluginNavigationNavigation;
+      'plugin::navigation.navigation-item': PluginNavigationNavigationItem;
+      'plugin::navigation.navigations-items-related': PluginNavigationNavigationsItemsRelated;
       'plugin::publisher.action': PluginPublisherAction;
       'plugin::react-icons.iconlibrary': PluginReactIconsIconlibrary;
       'plugin::sitemap.sitemap': PluginSitemapSitemap;

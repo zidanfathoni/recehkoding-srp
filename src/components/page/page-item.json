@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_page_page_items",
+  "info": {
+    "displayName": "page-item"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::react-icons.icon"
+    }
+  }
+}
