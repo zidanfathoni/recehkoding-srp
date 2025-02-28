@@ -294,6 +294,18 @@ export interface PagePageSubItem extends Schema.Component {
   };
 }
 
+export interface SharedCookieButton extends Schema.Component {
+  collectionName: 'components_shared_cookie_buttons';
+  info: {
+    displayName: 'Cookie Button';
+    icon: 'mouse-pointer';
+  };
+  attributes: {
+    buttonType: Attribute.Enumeration<['Primary', 'Secondary', 'Text']>;
+    label: Attribute.String;
+  };
+}
+
 export interface SharedMetaSocial extends Schema.Component {
   collectionName: 'components_shared_meta_socials';
   info: {
@@ -369,6 +381,7 @@ declare module '@strapi/types' {
       'micro.ticket-answer': MicroTicketAnswer;
       'page.page-item': PagePageItem;
       'page.page-sub-item': PagePageSubItem;
+      'shared.cookie-button': SharedCookieButton;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }

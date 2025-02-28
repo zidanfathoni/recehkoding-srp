@@ -9,19 +9,12 @@ module.exports = ({ env }) => ({
       },
     },
   },
-  navigation: {
-    enabled: true,
+  'users-permissions': {
     config: {
-      additionalFields: ['audience', { name: 'my_custom_field', type: 'boolean', label: 'My custom field' }],
-      // contentTypes: ['api::page.page'],
-      // contentTypesNameFields: {
-      //   'api::page.page': ['title']
-      // },
-      // pathDefaultFields: {
-      //   'api::page.page': ['slug']
-      // },
-      allowedLevels: 2,
-    }
+      jwt: {
+        expiresIn: '7d', // Contoh: 7 hari
+      },
+    },
   },
   slugify: {
     enabled: true,
