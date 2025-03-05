@@ -20,41 +20,33 @@
       "type": "text",
       "required": true
     },
-    "stacks": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::stack.stack"
-    },
     "link": {
       "type": "text",
       "default": "#"
     },
-    "detail": {
-      "type": "component",
-      "repeatable": false,
-      "component": "content.blog-detail",
+    "start_date": {
+      "type": "date",
       "required": true
     },
-    "date": {
+    "end_date": {
       "type": "date"
     },
-    "images": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "title"
-    },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.seo",
+    "active": {
+      "type": "boolean",
+      "default": true,
       "required": true
+    },
+    "tech": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

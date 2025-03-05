@@ -1433,6 +1433,7 @@ export interface ApiZidanfathProjectZidanfathProject
     draftAndPublish: true;
   };
   attributes: {
+    active: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::zidanfath-project.zidanfath-project',
@@ -1440,22 +1441,16 @@ export interface ApiZidanfathProjectZidanfathProject
       'admin::user'
     > &
       Attribute.Private;
-    date: Attribute.Date;
     description: Attribute.Text & Attribute.Required;
-    detail: Attribute.Component<'content.blog-detail'> & Attribute.Required;
-    images: Attribute.Media<'images'> & Attribute.Required;
+    end_date: Attribute.Date;
+    image: Attribute.Media<'images' | 'videos'>;
     link: Attribute.Text & Attribute.DefaultTo<'#'>;
     publishedAt: Attribute.DateTime;
-    seo: Attribute.Component<'shared.seo'> & Attribute.Required;
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
-    slug: Attribute.UID<'api::zidanfath-project.zidanfath-project', 'title'>;
-    stacks: Attribute.Relation<
-      'api::zidanfath-project.zidanfath-project',
-      'oneToMany',
-      'api::stack.stack'
-    >;
+    start_date: Attribute.Date & Attribute.Required;
+    tech: Attribute.String & Attribute.Required;
     title: Attribute.String & Attribute.Required;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
