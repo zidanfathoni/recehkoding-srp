@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_micro_platforms",
+  "info": {
+    "displayName": "platform"
+  },
+  "options": {},
+  "attributes": {
+    "platform": {
+      "type": "enumeration",
+      "enum": [
+        "instagram",
+        "tiktok",
+        "youtube",
+        "twitter",
+        "zoom",
+        "google meet"
+      ],
+      "required": true,
+      "default": "tiktok"
+    },
+    "link": {
+      "type": "text",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "required": true,
+      "default": "active"
+    }
+  }
+}

@@ -1,0 +1,200 @@
+{
+   "GET /api/banner": {
+      "content-type": "api::banner.banner",
+      "populate": {
+         "images": {
+            "fields": [
+               "url",
+               "height",
+               "width"
+            ]
+         }
+      }
+   },
+   "GET /api/menus": {
+      "content-type": "plugin::menus.menu",
+      "fields": [
+         "title",
+         "slug"
+      ],
+      "populate": {
+         "items": {
+            "fields": [
+               "order",
+               "title",
+               "url",
+               "target"
+            ]
+         }
+      }
+   },
+   "GET /api/testimonials": {
+      "content-type": "api::testimonial.testimonial",
+      "fields": [
+         "title",
+         "slug",
+         "company",
+         "job",
+         "message",
+         "id"
+      ],
+      "populate": {
+         "link": {
+            "fields": [
+               "href",
+               "label",
+               "target",
+               "is_external"
+            ]
+         }
+      }
+   },
+   "GET /api/zidanfath-projects": {
+      "content-type": "api::zidanfath-project.zidanfath-project",
+      "fields": [
+         "title",
+         "description",
+         "link",
+         "date",
+         "id"
+      ],
+      "populate": {
+         "stacks": {
+            "fields": [
+               "title",
+               "description",
+               "slug",
+               "id"
+            ],
+            "populate": {}
+         },
+         "images": {
+            "fields": [
+               "name",
+               "width",
+               "height",
+               "url"
+            ]
+         }
+      }
+   },
+   "GET /api/zidanfath-projects/:id": {
+      "content-type": "api::zidanfath-project.zidanfath-project",
+      "fields": [
+         "title",
+         "description",
+         "link",
+         "date",
+         "id"
+      ],
+      "populate": {
+         "detail": {
+            "fields": [
+               "content"
+            ]
+         },
+         "images": {
+            "fields": [
+               "name",
+               "width",
+               "height",
+               "url"
+            ]
+         },
+         "stacks": {
+            "fields": [
+               "title",
+               "description",
+               "slug"
+            ],
+            "populate": {
+               "icons_svg": {
+                  "fields": [
+                     "name",
+                     "width",
+                     "height",
+                     "url"
+                  ]
+               }
+            }
+         }
+      }
+   },
+   "GET /api/home-page": {
+      "content-type": "api::home-page.home-page",
+      "populate": {
+         "links": {
+            "fields": [
+               "icons_web",
+               "icons_mobile"
+            ],
+            "populate": {
+               "link": {
+                  "fields": [
+                     "href",
+                     "label",
+                     "target",
+                     "is_external",
+                     "theme"
+                  ]
+               }
+            }
+         },
+         "stacks": {
+            "fields": [
+               "title",
+               "description",
+               "slug"
+            ],
+            "populate": {
+               "icons_svg": {
+                  "fields": [
+                     "name",
+                     "width",
+                     "height",
+                     "url"
+                  ]
+               }
+            }
+         }
+      }
+   },
+   "GET /api/quick-link": {
+      "content-type": "api::quick-link.quick-link",
+      "populate": {
+         "links": {
+            "fields": [
+               "href",
+               "label",
+               "target"
+            ]
+         }
+      }
+   },
+   "GET /api/profile-team": {
+      "content-type": "api::profile-team.profile-team",
+      "fields": [
+         "title",
+         "description"
+      ],
+      "populate": {
+         "users_permissions_users": {
+            "fields": [
+               "username",
+               "job_title",
+               "verified"
+            ],
+            "populate": {
+               "avatar": {
+                  "fields": [
+                     "width",
+                     "height",
+                     "name",
+                     "url"
+                  ]
+               }
+            }
+         }
+      }
+   }
+}

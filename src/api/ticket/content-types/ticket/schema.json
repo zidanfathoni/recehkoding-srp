@@ -38,6 +38,21 @@
       ],
       "required": true,
       "default": "pending"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "answer": {
+      "type": "component",
+      "repeatable": true,
+      "component": "micro.ticket-answer"
+    },
+    "uuid": {
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::strapi-advanced-uuid.uuid"
     }
   }
 }

@@ -1,7 +1,8 @@
 {
   "collectionName": "components_macro_link_icons",
   "info": {
-    "displayName": "LinkIcons"
+    "displayName": "LinkIcons",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -9,10 +10,6 @@
       "type": "customField",
       "required": true,
       "customField": "plugin::react-icons.icon"
-    },
-    "icons_mobile": {
-      "type": "string",
-      "required": true
     },
     "link": {
       "type": "component",

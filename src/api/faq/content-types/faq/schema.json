@@ -4,7 +4,8 @@
   "info": {
     "singularName": "faq",
     "pluralName": "faqs",
-    "displayName": "faq"
+    "displayName": "faq",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -29,6 +30,17 @@
       "type": "customField",
       "required": true,
       "customField": "plugin::react-icons.icon"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Getting Started",
+        "Billing",
+        "Pricing",
+        "Support"
+      ],
+      "required": true,
+      "default": "Getting Started"
     }
   }
 }

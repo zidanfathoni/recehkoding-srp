@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_micro_pricings",
+  "info": {
+    "displayName": "pricing",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "free",
+        "premium"
+      ],
+      "default": "free",
+      "required": true
+    },
+    "price": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    }
+  }
+}

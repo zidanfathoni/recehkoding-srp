@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "profile_teams",
+  "info": {
+    "singularName": "profile-team",
+    "pluralName": "profile-teams",
+    "displayName": "profile-team"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "users_permissions_users": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

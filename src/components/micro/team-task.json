@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_micro_team_tasks",
+  "info": {
+    "displayName": "team-task"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "to do",
+        "on progress",
+        "on review",
+        "done",
+        "cancelled"
+      ],
+      "required": true,
+      "default": "to do"
+    },
+    "deadline": {
+      "type": "datetime",
+      "required": true
+    },
+    "percentage": {
+      "type": "decimal",
+      "required": true
+    },
+    "notes": {
+      "type": "text",
+      "required": true
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

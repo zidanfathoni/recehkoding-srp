@@ -61,6 +61,16 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::stack.stack"
+    },
+    "task": {
+      "type": "component",
+      "repeatable": true,
+      "component": "micro.team-task"
+    },
+    "portfolios": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::portfolio.portfolio"
     }
   }
 }
