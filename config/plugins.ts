@@ -31,9 +31,6 @@ module.exports = ({ env }) => ({
       },
     },
   },
-  "strapi-plugin-lottie": {
-    enabled: true
-  },
   "graphql": {
     enabled: true,
     config: {
