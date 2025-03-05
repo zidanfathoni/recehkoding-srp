@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "faqs",
+  "info": {
+    "singularName": "faq",
+    "pluralName": "faqs",
+    "displayName": "faq",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "question": {
+      "type": "text",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "question",
+      "required": true
+    },
+    "answer": {
+      "type": "text",
+      "required": true
+    },
+    "icons": {
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::react-icons.icon"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Getting Started",
+        "Billing",
+        "Pricing",
+        "Support"
+      ],
+      "required": true,
+      "default": "Getting Started"
+    }
+  }
+}

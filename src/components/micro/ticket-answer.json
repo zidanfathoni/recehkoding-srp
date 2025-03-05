@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_micro_ticket_answers",
+  "info": {
+    "displayName": "ticket-answer"
+  },
+  "options": {},
+  "attributes": {
+    "role": {
+      "type": "enumeration",
+      "enum": [
+        "admin",
+        "user"
+      ],
+      "required": true,
+      "default": "user"
+    },
+    "answer": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

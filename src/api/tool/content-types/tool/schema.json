@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tools",
+  "info": {
+    "singularName": "tool",
+    "pluralName": "tools",
+    "displayName": "tool"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Environmental",
+        "Management",
+        "Service",
+        "Technology",
+        "Mobile Apps",
+        "Front-end",
+        "Back-end",
+        "AI"
+      ],
+      "required": true,
+      "default": "Environmental"
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "macro.link-icons"
+    }
+  }
+}

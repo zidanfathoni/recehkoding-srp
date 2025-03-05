@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_micro_stacks",
+  "info": {
+    "displayName": "stack",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "icons": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "reacticon": {
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::react-icons.icon"
+    }
+  }
+}

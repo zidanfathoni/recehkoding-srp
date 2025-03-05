@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_macro_link_icons",
+  "info": {
+    "displayName": "LinkIcons",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "icons_web": {
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::react-icons.icon"
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "micro.link"
+    }
+  }
+}

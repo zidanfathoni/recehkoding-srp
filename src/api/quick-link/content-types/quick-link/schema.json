@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "quick_links",
+  "info": {
+    "singularName": "quick-link",
+    "pluralName": "quick-links",
+    "displayName": "quick-link",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "micro.link",
+      "required": true
+    },
+    "social": {
+      "type": "component",
+      "repeatable": true,
+      "component": "macro.link-icons"
+    }
+  }
+}
