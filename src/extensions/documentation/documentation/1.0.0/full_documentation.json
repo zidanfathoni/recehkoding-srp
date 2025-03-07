@@ -22,11 +22,11 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-03-05T07:54:15.416Z"
+    "x-generation-date": "2025-03-07T03:52:40.726Z"
   },
   "servers": [
     {
-      "url": "http://localhost:1337/api",
+      "url": "http://0.0.0.0:1338/api",
       "description": "Development server"
     }
   ],
