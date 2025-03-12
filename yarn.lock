@@ -3722,7 +3722,7 @@
     prop-types "^15.8.1"
     react-remove-scroll "^2.5.9"
 
-"@strapi/design-system@1.19.0", "@strapi/design-system@^1.13.1", "@strapi/design-system@^1.19.0", "@strapi/design-system@^1.4.1", "@strapi/design-system@^1.6.3":
+"@strapi/design-system@1.19.0", "@strapi/design-system@^1.13.1", "@strapi/design-system@^1.19.0", "@strapi/design-system@^1.6.3":
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/@strapi/design-system/-/design-system-1.19.0.tgz#1b0ca923c22f167baa6d35663e7f47c971df474c"
   integrity sha512-kEQNaRztIcr6I5Zh6mxtE/Nmkk1mylCS5s56ySKDdqOjWZw2BCbS72/J9k6r1RF1TLIDSXJN9r5dHR0ZKtWvBQ==
@@ -13627,13 +13627,6 @@ strapi-plugin-menus@^1.6.1:
     react-redux "8.1.1"
     react-router-dom "6.16.0"
     react-window "1.8.9"
-
-strapi-plugin-protected-populate@^1.3.6:
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/strapi-plugin-protected-populate/-/strapi-plugin-protected-populate-1.3.6.tgz#5fcac23c437da98d803d7821a6294ed42418199c"
-  integrity sha512-peMTnPLOH2lRXNkJ6WfNzg2fuzpm2Nv7bFESy9Gy0VKJESWG8NKpDl5aV+eNgUn8d6KMNeJgvxQYKf+DPc0zYg==
-  dependencies:
-    "@strapi/design-system" "^1.4.1"
 
 strapi-plugin-publisher@^1.5.7:
   version "1.5.7"
