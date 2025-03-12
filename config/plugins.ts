@@ -47,28 +47,27 @@ module.exports = ({ env }) => ({
       endpoint: `${env('HOST_URL')}/graphql`, // OPTIONAL - endpoint has to be accessible from the browser
     }
   },
-  'protected-populate': {
-    enabled: true,
-    config: {
-      ['auto-populate']: true,
-    },
-  },
+  // 'protected-populate': {
+  //   enabled: true,
+  //   config: {
+  //     ['auto-populate']: true,
+  //   },
+  // },
   email: {
     config: {
       provider: 'nodemailer',
       providerOptions: {
-        host: 'gmail.googleapis.com',  // Ganti dengan host SMTP Anda
-        port: 587,                     // Gunakan port SMTP (587 untuk TLS)
-        secure: false,                 // Gunakan true untuk port 465, selain itu false
+        host: 'mail.recehkoding.com',  // Ganti dengan host SMTP Anda
+        port: 465,                     // Gunakan port SMTP (587 untuk TLS)
+        secure: true,                 // Gunakan true untuk port 465, selain itu false
         auth: {
-          user: 'recehkoding@gmail.com', // Email SMTP Anda
-          clientId: env('CLIENT_ID', 'client-id'),
-          clientSecret: env('CLIENT_SECRET', 'client-secret'),
+          user: 'hello@recehkoding.com', // Email SMTP Anda
+          pass: 'Derina@6661FA',              // Password SMTP Anda
         },
       },
       settings: {
-        defaultFrom: 'recehkoding@gmail.com',
-        defaultReplyTo: 'recehkoding@gmail.com',
+        defaultFrom: 'hello@recehkoding.com',
+        defaultReplyTo: 'hello@recehkoding.com',
       },
     },
   },
